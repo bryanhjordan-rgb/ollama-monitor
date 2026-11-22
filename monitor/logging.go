@@ -33,37 +33,53 @@ func NewRotatedWriter(filename string, maxSize int64) (*RotatedWriter, error) {
 }
 
 func (rw *RotatedWriter) open() error {
-	_ = os.MkdirAll(filepath.Dir(rw.filename), 0755)
-	var err error
-	rw.file, err = os.OpenFile(rw.filename, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
-	return err
+	if err := os.MkdirAll(filepath.Dir(rw.filename), 0755); err != nil {
+		return err
+	}
+	f, err := os.OpenFile(rw.filename, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
+	if err != nil {
+		return err
+	}
+	rw.file = f
+	return nil
 }
 
 func (rw *RotatedWriter) Write(p []byte) (n int, err error) {
 	rw.mu.Lock()
 	defer rw.mu.Unlock()
 
+	if rw.file == nil {
+		return 0, os.ErrClosed
+	}
+
 	stat, err := rw.file.Stat()
 	if err == nil && stat.Size()+int64(len(p)) > rw.maxSize {
 		_ = rw.file.Close()
+		rw.file = nil
 		backup := rw.filename + "." + time.Now().Format("20060102150405")
 		_ = os.Rename(rw.filename, backup)
-		_ = rw.open()
+		if err := rw.open(); err != nil {
+			return 0, err
+		}
 	}
 
 	return rw.file.Write(p)
 }
 
 func (rw *RotatedWriter) Close() error {
-	if rw.file != nil {
-		return rw.file.Close()
+	rw.mu.Lock()
+	defer rw.mu.Unlock()
+
+	if rw.file == nil {
+		return nil
 	}
-	return nil
+	err := rw.file.Close()
+	rw.file = nil
+	return err
 }
 
 func setupLogging() {
-	appData := os.Getenv("APPDATA")
-	logDir := filepath.Join(appData, AppName, "logs")
+	logDir := filepath.Join(appDataDir(), "logs")
 	_ = os.MkdirAll(logDir, 0755)
 
 	logFile := filepath.Join(logDir, fmt.Sprintf("ollama_monitor_%s.log", time.Now().Format("20060102")))

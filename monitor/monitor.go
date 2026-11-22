@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/url"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/getlantern/systray"
@@ -15,6 +16,8 @@ var (
 	lastStatus         = ""
 	mStatusPlaceholder *systray.MenuItem
 	mModelSlots        []*systray.MenuItem
+	stopCh             chan struct{}
+	stopOnce           sync.Once
 )
 
 func changeAPIURL() {
@@ -32,7 +35,7 @@ func changeAPIURL() {
 	}
 
 	newURL = strings.TrimSpace(newURL)
-	_, err = url.Parse(newURL)
+	parsedURL, err := url.Parse(newURL)
 	if err != nil || newURL == "" || !strings.HasPrefix(newURL, "http") {
 		_ = zenity.Error(
 			"Invalid API URL format. It must start with http:// or https://",
@@ -46,8 +49,8 @@ func changeAPIURL() {
 	settingsLock.Unlock()
 
 	saveSettings()
-	
-	sendNotification("Settings Saved", fmt.Sprintf("Ollama API URL updated to: %s", newURL))
+
+	sendNotification("Settings Saved", fmt.Sprintf("Ollama API URL updated to: %s", parsedURL.Redacted()))
 }
 
 func showAbout() {
@@ -111,11 +114,18 @@ func updateStatusLoop() {
 			interval = 3 * time.Second
 		}
 
-		time.Sleep(interval)
+		select {
+		case <-stopCh:
+			return
+		case <-time.After(interval):
+		}
 	}
 }
 
 func onReady() {
+	stopCh = make(chan struct{})
+	stopOnce = sync.Once{}
+
 	systray.SetIcon(iconBlue)
 	systray.SetTitle("Ollama Monitor")
 	systray.SetTooltip("Ollama Monitor - Loading...")
@@ -192,6 +202,9 @@ func onReady() {
 }
 
 func onExit() {
+	if stopCh != nil {
+		stopOnce.Do(func() { close(stopCh) })
+	}
 	appLogger.Println("Ollama Monitor stopped")
 	if rotatedWriter != nil {
 		_ = rotatedWriter.Close()

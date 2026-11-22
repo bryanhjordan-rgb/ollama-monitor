@@ -37,11 +37,17 @@ var (
 )
 
 func initHTTPClient() {
+	settingsLock.Lock()
+	insecureTLS := settings.InsecureTLS
+	settingsLock.Unlock()
+
 	tr := &http.Transport{
 		Proxy: http.ProxyFromEnvironment,
-		TLSClientConfig: &tls.Config{
-			InsecureSkipVerify: true, // Bypass SSL/TLS certificate validation for proxies and self-signed certs
-		},
+	}
+	if insecureTLS {
+		tr.TLSClientConfig = &tls.Config{
+			InsecureSkipVerify: true, // Opt-in TLS bypass for proxies and self-signed certs
+		}
 	}
 	client = &http.Client{
 		Transport: tr,

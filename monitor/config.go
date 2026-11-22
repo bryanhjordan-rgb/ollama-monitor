@@ -10,8 +10,9 @@ import (
 
 // Settings structure
 type Settings struct {
-	Startup bool   `json:"startup"`
-	APIURL  string `json:"api_url"`
+	Startup     bool   `json:"startup"`
+	APIURL      string `json:"api_url"`
+	InsecureTLS bool   `json:"insecure_tls,omitempty"`
 }
 
 var (
@@ -20,10 +21,15 @@ var (
 	settingsLock sync.Mutex
 )
 
+func appDataDir() string {
+	if dir, err := os.UserConfigDir(); err == nil && dir != "" {
+		return filepath.Join(dir, AppName)
+	}
+	return AppName
+}
+
 func loadSettings() {
-	appData := os.Getenv("APPDATA")
-	settingsPath = filepath.Join(appData, AppName, "settings.json")
-	_ = os.MkdirAll(filepath.Dir(settingsPath), 0755)
+	settingsPath = filepath.Join(appDataDir(), "settings.json")
 
 	settingsLock.Lock()
 	defer settingsLock.Unlock()
@@ -43,26 +49,38 @@ func loadSettings() {
 		Startup: false,
 		APIURL:  fmt.Sprintf("http://%s:%s", APIHost, APIPort),
 	}
-	saveSettingsLocked()
+	if err := saveSettingsLocked(); err != nil {
+		appLogger.Printf("Failed to save default settings: %v", err)
+		return
+	}
 	appLogger.Println("Created default settings")
 }
 
-func saveSettingsLocked() {
-	file, err := os.Create(settingsPath)
-	if err != nil {
-		appLogger.Printf("Failed to save settings: %v", err)
-		return
+func saveSettingsLocked() error {
+	if err := os.MkdirAll(filepath.Dir(settingsPath), 0700); err != nil {
+		return err
 	}
-	defer file.Close()
+	file, err := os.OpenFile(settingsPath, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0600)
+	if err != nil {
+		return err
+	}
 
 	encoder := json.NewEncoder(file)
 	encoder.SetIndent("", "    ")
-	_ = encoder.Encode(settings)
+	if err := encoder.Encode(settings); err != nil {
+		_ = file.Close()
+		return err
+	}
+	return file.Close()
 }
 
 func saveSettings() {
 	settingsLock.Lock()
-	defer settingsLock.Unlock()
-	saveSettingsLocked()
+	err := saveSettingsLocked()
+	settingsLock.Unlock()
+	if err != nil {
+		appLogger.Printf("Failed to save settings: %v", err)
+		return
+	}
 	appLogger.Println("Settings saved successfully")
 }
