@@ -92,3 +92,123 @@ let tagsJSON = """
     #expect(!c.isLocal)
     #expect(throws: OllamaError.self) { try OllamaClient(urlString: "nope") }
 }
+
+final class StubURLProtocol: URLProtocol, @unchecked Sendable {
+    typealias Handler = @Sendable (URLRequest) throws -> (HTTPURLResponse, Data)
+    private static let lock = NSLock()
+    nonisolated(unsafe) private static var handlers: [String: Handler] = [:]
+
+    static func makeSession(handler: @escaping Handler) -> URLSession {
+        let id = UUID().uuidString
+        lock.withLock { handlers[id] = handler }
+        let config = URLSessionConfiguration.ephemeral
+        config.protocolClasses = [StubURLProtocol.self]
+        config.httpAdditionalHeaders = ["X-Stub-ID": id]
+        return URLSession(configuration: config)
+    }
+
+    override class func canInit(with request: URLRequest) -> Bool { true }
+    override class func canonicalRequest(for request: URLRequest) -> URLRequest { request }
+
+    override func startLoading() {
+        guard let id = request.value(forHTTPHeaderField: "X-Stub-ID"),
+              let handler = Self.lock.withLock({ Self.handlers[id] })
+        else {
+            client?.urlProtocol(self, didFailWithError: URLError(.unknown))
+            return
+        }
+        do {
+            let (response, data) = try handler(request)
+            client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+            client?.urlProtocol(self, didLoad: data)
+            client?.urlProtocolDidFinishLoading(self)
+        } catch {
+            client?.urlProtocol(self, didFailWithError: error)
+        }
+    }
+
+    override func stopLoading() {}
+}
+
+private func httpResponse(_ url: URL, status: Int) -> HTTPURLResponse {
+    HTTPURLResponse(url: url, statusCode: status, httpVersion: nil, headerFields: nil)!
+}
+
+@Test func clientSnapshotRunningAndActions() async throws {
+    let seenLock = NSLock()
+    nonisolated(unsafe) var requests: [(method: String, path: String, auth: String?, body: [String: Any]?)] = []
+
+    let session = StubURLProtocol.makeSession { req in
+        let url = req.url!
+        let bodyData = req.httpBody ?? req.httpBodyStream.map { stream in
+            stream.open()
+            defer { stream.close() }
+            var data = Data()
+            var buf = [UInt8](repeating: 0, count: 1024)
+            while stream.hasBytesAvailable {
+                let n = stream.read(&buf, maxLength: buf.count)
+                if n > 0 { data.append(buf, count: n) } else { break }
+            }
+            return data
+        }
+        let bodyJSON = bodyData.flatMap { try? JSONSerialization.jsonObject(with: $0) as? [String: Any] }
+        seenLock.withLock {
+            requests.append((req.httpMethod ?? "GET", url.path, req.value(forHTTPHeaderField: "Authorization"), bodyJSON))
+        }
+        switch url.path {
+        case "/api/version":
+            return (httpResponse(url, status: 200), Data(#"{"version":"0.40.17"}"#.utf8))
+        case "/api/ps":
+            return (httpResponse(url, status: 200), Data(psJSON.utf8))
+        case "/api/tags":
+            return (httpResponse(url, status: 200), Data(tagsJSON.utf8))
+        case "/api/generate":
+            return (httpResponse(url, status: 200), Data("{}".utf8))
+        default:
+            return (httpResponse(url, status: 404), Data())
+        }
+    }
+
+    let client = try OllamaClient(urlString: "https://bob:foo%25bar@ollama.example.com/", session: session)
+    let snap = try await client.snapshot()
+    #expect(snap.version == "0.40.17")
+    #expect(snap.running.map(\.name) == ["gemma4:e4b"])
+    #expect(snap.installed.map(\.name) == ["inkling-2-mini:latest", "llama3.2:3b"])
+
+    let expectedAuth = "Basic " + Data("bob:foo%bar".utf8).base64EncodedString()
+    let snapshotAuths = seenLock.withLock { requests.map(\.auth) }
+    #expect(snapshotAuths == [expectedAuth, expectedAuth, expectedAuth])
+
+    seenLock.withLock { requests.removeAll() }
+    let running = try await client.running()
+    #expect(running.map(\.name) == ["gemma4:e4b"])
+    #expect(seenLock.withLock { requests.map(\.path) } == ["/api/ps"])
+
+    seenLock.withLock { requests.removeAll() }
+    try await client.load("gemma4:e4b")
+    try await client.unload("gemma4:e4b")
+    let postBodies = seenLock.withLock { requests }
+    #expect(postBodies.count == 2)
+    #expect(postBodies[0].path == "/api/generate")
+    #expect(postBodies[0].body?["model"] as? String == "gemma4:e4b")
+    #expect(postBodies[0].body?["keep_alive"] == nil)
+    #expect(postBodies[1].body?["model"] as? String == "gemma4:e4b")
+    #expect(postBodies[1].body?["keep_alive"] as? Int == 0)
+}
+
+@Test func clientErrorParsing() async throws {
+    let session = StubURLProtocol.makeSession { req in
+        let url = req.url!
+        if url.path == "/api/ps" {
+            return (httpResponse(url, status: 404), Data(#"{"error":"model 'x' not found"}"#.utf8))
+        }
+        return (httpResponse(url, status: 500), Data("plain text error".utf8))
+    }
+    let client = try OllamaClient(urlString: "http://localhost:11434", session: session)
+    await #expect(throws: OllamaError.http(404, "model 'x' not found")) {
+        _ = try await client.running()
+    }
+    await #expect(throws: OllamaError.http(500, "")) {
+        _ = try await client.installed()
+    }
+}

@@ -13,5 +13,10 @@ let package = Package(
             swiftSettings: [.defaultIsolation(MainActor.self)]
         ),
         .testTarget(name: "OllamaKitTests", dependencies: ["OllamaKit"]),
+        .testTarget(
+            name: "OllamaMonitorTests",
+            dependencies: ["OllamaMonitor", "OllamaKit"],
+            swiftSettings: [.defaultIsolation(MainActor.self)]
+        ),
     ]
 )

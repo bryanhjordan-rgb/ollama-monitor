@@ -17,44 +17,55 @@ final class Monitor {
     var actionError: String?
 
     // Settings, saved to UserDefaults.
-    var apiURL: String = defaults.string(forKey: "apiURL") ?? OllamaClient.defaultURL {
+    var apiURL: String {
         didSet { defaults.set(apiURL, forKey: "apiURL"); actionError = nil; status = .connecting; start() }
     }
-    var pollSeconds: Double = defaults.object(forKey: "pollSeconds") as? Double ?? 3 {
+    var pollSeconds: Double {
         didSet {
             defaults.set(pollSeconds, forKey: "pollSeconds")
             if task != nil { start() }
         }
     }
-    var notifyModels: Bool = defaults.object(forKey: "notifyModels") as? Bool ?? true {
+    var notifyModels: Bool {
         didSet { defaults.set(notifyModels, forKey: "notifyModels") }
     }
-    var notifyOffline: Bool = defaults.object(forKey: "notifyOffline") as? Bool ?? true {
+    var notifyOffline: Bool {
         didSet { defaults.set(notifyOffline, forKey: "notifyOffline") }
     }
-    var showCount: Bool = defaults.object(forKey: "showCount") as? Bool ?? true {
+    var showCount: Bool {
         didSet { defaults.set(showCount, forKey: "showCount") }
     }
 
     @ObservationIgnored private let isPreview: Bool
     @ObservationIgnored private let session: URLSession
+    @ObservationIgnored private let defaults: UserDefaults
     @ObservationIgnored private var notificationsConfigured = false
     @ObservationIgnored private var task: Task<Void, Never>?
     @ObservationIgnored private var refreshCount = 0
     @ObservationIgnored private var appliedRefresh = 0
     @ObservationIgnored private let notifier = NotificationDelegate()
-    private static let defaults = UserDefaults.standard
-    private var defaults: UserDefaults { Self.defaults }
 
-    init(session: URLSession = .shared) {
+    init(session: URLSession = .shared, defaults: UserDefaults = .standard) {
         self.session = session
+        self.defaults = defaults
         self.isPreview = false
+        self.apiURL = defaults.string(forKey: "apiURL") ?? OllamaClient.defaultURL
+        self.pollSeconds = defaults.object(forKey: "pollSeconds") as? Double ?? 3
+        self.notifyModels = defaults.object(forKey: "notifyModels") as? Bool ?? true
+        self.notifyOffline = defaults.object(forKey: "notifyOffline") as? Bool ?? true
+        self.showCount = defaults.object(forKey: "showCount") as? Bool ?? true
     }
 
     /// For snapshots and previews: a fixed status, no polling.
-    init(preview: Status) {
-        self.session = .shared
+    init(preview: Status, session: URLSession = .shared) {
+        self.session = session
+        self.defaults = .standard
         self.isPreview = true
+        self.apiURL = OllamaClient.defaultURL
+        self.pollSeconds = 3
+        self.notifyModels = true
+        self.notifyOffline = true
+        self.showCount = true
         self.status = preview
     }
 
