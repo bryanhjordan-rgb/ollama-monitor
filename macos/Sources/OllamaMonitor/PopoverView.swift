@@ -239,12 +239,20 @@ struct InstalledRow: View {
     let busy: Bool
     let load: () -> Void
 
+    private var tooBig: Bool { Double(model.size) > 0.6 * Double(ProcessInfo.processInfo.physicalMemory) }
+
     var body: some View {
         HStack(spacing: 8) {
             VStack(alignment: .leading, spacing: 2) {
                 Text(model.name).lineLimit(1).truncationMode(.middle)
                 HStack(spacing: 6) {
-                    Text(Format.bytes(model.size))
+                    if tooBig {
+                        Label(Format.bytes(model.size), systemImage: "exclamationmark.triangle.fill")
+                            .foregroundStyle(.orange)
+                            .help("Uses most of this Mac's memory; loading it may make the Mac swap")
+                    } else {
+                        Text(Format.bytes(model.size))
+                    }
                     if let summary = model.details?.summary { Text(summary) }
                     ForEach(model.badges, id: \.self) { badge in
                         Image(systemName: Self.symbol(for: badge))

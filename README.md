@@ -71,6 +71,16 @@ A lightweight cross-platform system tray application to monitor Ollama AI models
    go build -ldflags "-s -w" -o OllamaMonitor
    ```
 
+### Option 4: Native macOS menu-bar app (macOS 26+)
+A SwiftUI app in [`macos/`](macos/) replaces the tray menu with a popover: a card per loaded model (memory share, GPU/CPU split, context length, live unload countdown, **Unload**), installed models with capability icons and **Load**, a warning on models too big for the Mac's memory, notifications, and a Settings window (API URL, check interval, open at login).
+```bash
+cd macos
+./build.sh --open          # builds, installs ~/Applications/OllamaMonitor.app, starts it
+./build.sh --snapshot DIR  # renders every popover state in light and dark to PNGs
+swift test --scratch-path ~/Library/Developer/OllamaMonitor/test-build
+```
+Needs Xcode (Swift 6.2+). Unlike the Go app it verifies TLS certificates.
+
 ---
 
 ## 📖 Usage

@@ -28,6 +28,9 @@ enum Snapshot {
             }
             await capture(SettingsView(monitor: settings), to: "\(dir)/settings-\(mode).png", mode: mode)
         }
+        // The real server at the saved API URL, read-only: checks decoding against live data.
+        await settings.refresh()
+        await capture(PopoverView(monitor: settings), to: "\(dir)/popover-live-light.png", mode: "light")
         print("SNAPSHOT done \(dir)")
     }
 
