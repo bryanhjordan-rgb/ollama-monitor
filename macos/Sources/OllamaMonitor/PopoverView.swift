@@ -14,11 +14,23 @@ struct PopoverView: View {
             Divider()
             content
             if let error = monitor.actionError {
-                Label(error, systemImage: "exclamationmark.triangle.fill")
-                    .font(.caption)
-                    .foregroundStyle(.red)
-                    .padding(.horizontal, 12)
-                    .padding(.bottom, 8)
+                HStack(alignment: .top, spacing: 6) {
+                    Label(error, systemImage: "exclamationmark.triangle.fill")
+                        .font(.caption)
+                        .foregroundStyle(.red)
+                    Spacer()
+                    Button {
+                        monitor.actionError = nil
+                    } label: {
+                        Image(systemName: "xmark")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    .buttonStyle(.borderless)
+                    .accessibilityLabel("Dismiss error")
+                }
+                .padding(.horizontal, 12)
+                .padding(.bottom, 8)
             }
             Divider()
             HStack {
@@ -43,6 +55,7 @@ struct PopoverView: View {
             .padding(.vertical, 8)
         }
         .frame(width: 340)
+        .onAppear { monitor.popoverOpened() }
     }
 
     @ViewBuilder private var content: some View {
@@ -61,7 +74,8 @@ struct PopoverView: View {
                         .fixedSize(horizontal: false, vertical: true)
                 } else {
                     ForEach(snapshot.running) { model in
-                        ModelCard(model: model, busy: monitor.busy.contains(model.name)) {
+                        ModelCard(model: model, isLocal: monitor.client?.isLocal ?? false,
+                                  busy: monitor.busy.contains(model.name)) {
                             monitor.unload(model.name)
                         }
                     }
@@ -97,7 +111,8 @@ struct HeaderView: View {
             }
             Spacer()
             Button {
-                Task { await monitor.refresh() }
+                monitor.actionError = nil
+                Task { await monitor.refresh(full: true) }
             } label: {
                 Image(systemName: "arrow.clockwise")
             }
@@ -116,6 +131,9 @@ struct HeaderView: View {
         let running = monitor.running
         guard !running.isEmpty else { return "\(monitor.displayHost) · \(stateName)" }
         let used = running.reduce(Int64(0)) { $0 + $1.size }
+        guard monitor.client?.isLocal == true else {
+            return "\(monitor.displayHost) · \(Format.bytes(used)) loaded"
+        }
         let total = Int64(ProcessInfo.processInfo.physicalMemory)
         return "\(monitor.displayHost) · \(Format.bytes(used)) of \(Format.bytes(total)) memory"
     }
@@ -139,6 +157,7 @@ struct HeaderView: View {
 
 struct ModelCard: View {
     let model: RunningModel
+    let isLocal: Bool
     let busy: Bool
     let unload: () -> Void
 
@@ -163,11 +182,17 @@ struct ModelCard: View {
                         .background(.quaternary, in: Capsule())
                 }
             }
-            ProgressView(value: memoryShare)
-                .tint(memoryShare > 0.6 ? .orange : .accentColor)
-                .accessibilityLabel("Share of memory")
+            if isLocal {
+                ProgressView(value: min(1, max(0, memoryShare)))
+                    .tint(memoryShare > 0.6 ? .orange : .accentColor)
+                    .accessibilityLabel("Share of memory")
+            }
             HStack {
-                Text("\(Format.bytes(model.size)) · \(Int((memoryShare * 100).rounded()))% of memory")
+                if isLocal {
+                    Text("\(Format.bytes(model.size)) · \(Int((memoryShare * 100).rounded()))% of memory")
+                } else {
+                    Text(Format.bytes(model.size))
+                }
                 Spacer()
                 if let summary = model.details?.summary { Text(summary) }
             }
@@ -186,7 +211,7 @@ struct ModelCard: View {
                 }
                 TimelineView(.periodic(from: .now, by: 1)) { context in
                     if let left = Format.countdown(until: model.expiresAt, now: context.date) {
-                        Label("unloads in \(left)", systemImage: "timer")
+                        Label(left == "now" ? "unloading now" : "unloads in \(left)", systemImage: "timer")
                             .monospacedDigit()
                     } else {
                         Label("stays loaded", systemImage: "pin")
@@ -215,10 +240,12 @@ struct InstalledList: View {
 
     var body: some View {
         let loaded = Set(snapshot.running.map(\.name))
+        let isLocal = monitor.client?.isLocal ?? false
         ScrollView {
             VStack(spacing: 0) {
                 ForEach(snapshot.installed) { model in
                     InstalledRow(model: model, loaded: loaded.contains(model.name),
+                                 isLocal: isLocal,
                                  busy: monitor.busy.contains(model.name)) {
                         monitor.load(model.name)
                     }
@@ -236,10 +263,13 @@ struct InstalledList: View {
 struct InstalledRow: View {
     let model: InstalledModel
     let loaded: Bool
+    let isLocal: Bool
     let busy: Bool
     let load: () -> Void
 
-    private var tooBig: Bool { Double(model.size) > 0.6 * Double(ProcessInfo.processInfo.physicalMemory) }
+    private var tooBig: Bool {
+        isLocal && Double(model.size) > 0.6 * Double(ProcessInfo.processInfo.physicalMemory)
+    }
 
     var body: some View {
         HStack(spacing: 8) {

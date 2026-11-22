@@ -3,14 +3,10 @@ import Foundation
 public struct ModelDetails: Decodable, Sendable, Equatable {
     public var parameterSize: String?
     public var quantizationLevel: String?
-    public var family: String?
-    public var format: String?
 
-    public init(parameterSize: String? = nil, quantizationLevel: String? = nil, family: String? = nil, format: String? = nil) {
+    public init(parameterSize: String? = nil, quantizationLevel: String? = nil) {
         self.parameterSize = parameterSize
         self.quantizationLevel = quantizationLevel
-        self.family = family
-        self.format = format
     }
 
     /// "8.0B · Q4_K_M", or nil when Ollama reports neither (MLX models report empty strings).
@@ -54,14 +50,12 @@ public struct InstalledModel: Decodable, Sendable, Equatable, Identifiable {
     public var id: String { name }
     public var name: String
     public var size: Int64
-    public var modifiedAt: Date?
     public var details: ModelDetails?
     public var capabilities: [String]?
 
-    public init(name: String, size: Int64, modifiedAt: Date? = nil, details: ModelDetails? = nil, capabilities: [String]? = nil) {
+    public init(name: String, size: Int64, details: ModelDetails? = nil, capabilities: [String]? = nil) {
         self.name = name
         self.size = size
-        self.modifiedAt = modifiedAt
         self.details = details
         self.capabilities = capabilities
     }

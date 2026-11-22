@@ -1,4 +1,4 @@
-import AppKit
+import Foundation
 import OllamaKit
 import UserNotifications
 
@@ -18,10 +18,13 @@ final class Monitor {
 
     // Settings, saved to UserDefaults.
     var apiURL: String = defaults.string(forKey: "apiURL") ?? OllamaClient.defaultURL {
-        didSet { defaults.set(apiURL, forKey: "apiURL"); status = .connecting; start() }
+        didSet { defaults.set(apiURL, forKey: "apiURL"); actionError = nil; status = .connecting; start() }
     }
     var pollSeconds: Double = defaults.object(forKey: "pollSeconds") as? Double ?? 3 {
-        didSet { defaults.set(pollSeconds, forKey: "pollSeconds") }
+        didSet {
+            defaults.set(pollSeconds, forKey: "pollSeconds")
+            if task != nil { start() }
+        }
     }
     var notifyModels: Bool = defaults.object(forKey: "notifyModels") as? Bool ?? true {
         didSet { defaults.set(notifyModels, forKey: "notifyModels") }
@@ -33,6 +36,9 @@ final class Monitor {
         didSet { defaults.set(showCount, forKey: "showCount") }
     }
 
+    @ObservationIgnored private let isPreview: Bool
+    @ObservationIgnored private let session: URLSession
+    @ObservationIgnored private var notificationsConfigured = false
     @ObservationIgnored private var task: Task<Void, Never>?
     @ObservationIgnored private var refreshCount = 0
     @ObservationIgnored private var appliedRefresh = 0
@@ -40,12 +46,19 @@ final class Monitor {
     private static let defaults = UserDefaults.standard
     private var defaults: UserDefaults { Self.defaults }
 
-    init() {}
+    init(session: URLSession = .shared) {
+        self.session = session
+        self.isPreview = false
+    }
 
     /// For snapshots and previews: a fixed status, no polling.
-    init(preview: Status) { status = preview }
+    init(preview: Status) {
+        self.session = .shared
+        self.isPreview = true
+        self.status = preview
+    }
 
-    var client: OllamaClient? { try? OllamaClient(urlString: apiURL) }
+    var client: OllamaClient? { try? OllamaClient(urlString: apiURL, session: session) }
     var displayHost: String { client?.displayHost ?? apiURL }
 
     var running: [RunningModel] {
@@ -64,25 +77,47 @@ final class Monitor {
 
     func start() {
         task?.cancel()
-        if Bundle.main.bundleIdentifier != nil {
+        if !notificationsConfigured && Bundle.main.bundleIdentifier != nil {
+            notificationsConfigured = true
             UNUserNotificationCenter.current().delegate = notifier
             Task { _ = try? await UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) }
         }
         task = Task { [weak self] in
             while !Task.isCancelled, let self {
-                await refresh()
-                try? await Task.sleep(for: .seconds(pollSeconds))
+                let isOnline: Bool = if case .online = status { true } else { false }
+                await refresh(full: !isOnline)
+                let base = max(1, pollSeconds)
+                let delay: Double = if case .offline = status { max(base, 10) } else { base }
+                try? await Task.sleep(for: .seconds(delay))
             }
         }
     }
 
-    func refresh() async {
+    func popoverOpened() {
+        guard !isPreview else { return }
+        Task { await refresh(full: true) }
+    }
+
+    func refresh(full: Bool = true) async {
         // The poll loop, Load/Unload and ⌘R can overlap; a slow older answer must not overwrite a newer one.
         refreshCount += 1
         let id = refreshCount, url = apiURL
         guard let client else { appliedRefresh = id; apply(.offline("The API URL in Settings isn't valid.")); return }
         let next: Status
-        do { next = .online(try await client.snapshot()) } catch { next = .offline(error.localizedDescription) }
+        do {
+            if !full, case .online(let current) = status {
+                let running = try await client.running()
+                next = .online(ServerSnapshot(version: current.version, running: running, installed: current.installed))
+            } else {
+                next = .online(try await client.snapshot())
+            }
+        } catch is CancellationError {
+            return
+        } catch let err as URLError where err.code == .cancelled {
+            return
+        } catch {
+            next = .offline(error.localizedDescription)
+        }
         guard url == apiURL, id > appliedRefresh else { return } // Server changed, or a newer refresh already landed.
         appliedRefresh = id
         apply(next)

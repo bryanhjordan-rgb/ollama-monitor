@@ -25,14 +25,13 @@ let tagsJSON = """
     #expect(m.runner == "mlx")
     #expect(m.gpuShare == 1)
     #expect(m.details?.summary == nil)
-    #expect(m.expiresAt == OllamaClient.parseDate("2026-11-22T05:47:40.764Z"))
+    #expect(m.expiresAt == OllamaClient.parseDate("2026-11-22T05:47:40.764554Z"))
 }
 
 @Test func decodesInstalledModels() throws {
     let tags = try OllamaClient.decoder.decode(TagsResponse.self, from: Data(tagsJSON.utf8))
     #expect(tags.models.count == 2)
     #expect(tags.models[0].badges == ["vision", "tools", "thinking"])
-    #expect(tags.models[0].modifiedAt != nil)
     #expect(tags.models[1].details?.summary == "3.2B · Q4_K_M")
     #expect(tags.models[1].badges.isEmpty)
     #expect(tags.models[0].canGenerate)
@@ -83,6 +82,10 @@ let tagsJSON = """
     let c = try OllamaClient(urlString: "https://bob:p%40ss@ollama.example.com")
     #expect(c.baseURL.absoluteString == "https://ollama.example.com")
     #expect(c.authorization == "Basic " + Data("bob:p@ss".utf8).base64EncodedString())
+    let pct = try OllamaClient(urlString: "https://bob:foo%25bar@ollama.example.com")
+    #expect(pct.authorization == "Basic " + Data("bob:foo%bar".utf8).base64EncodedString())
+    let pct20 = try OllamaClient(urlString: "https://bob:foo%2520bar@ollama.example.com")
+    #expect(pct20.authorization == "Basic " + Data("bob:foo%20bar".utf8).base64EncodedString())
     #expect(c.displayHost == "ollama.example.com")
     #expect(try OllamaClient(urlString: "http://localhost:11434").displayHost == "localhost")
     #expect(try OllamaClient(urlString: "http://127.0.0.1:11434").isLocal)

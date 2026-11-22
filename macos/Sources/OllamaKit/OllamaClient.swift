@@ -24,7 +24,7 @@ public struct OllamaClient: Sendable {
         guard let url = Self.validate(urlString), var parts = URLComponents(url: url, resolvingAgainstBaseURL: false)
         else { throw OllamaError.badURL(urlString) }
         if let user = parts.user {
-            let token = "\(user.removingPercentEncoding ?? user):\(parts.password?.removingPercentEncoding ?? "")"
+            let token = "\(user):\(parts.password ?? "")"
             authorization = "Basic " + Data(token.utf8).base64EncodedString()
             parts.user = nil
             parts.password = nil
@@ -59,12 +59,18 @@ public struct OllamaClient: Sendable {
 
     public func snapshot() async throws -> ServerSnapshot {
         async let v: VersionResponse = get("api/version")
-        async let ps: PSResponse = get("api/ps")
-        async let tags: TagsResponse = get("api/tags")
-        return try await ServerSnapshot(
-            version: v.version,
-            running: ps.models,
-            installed: tags.models.sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending })
+        async let r = running()
+        async let i = installed()
+        return try await ServerSnapshot(version: v.version, running: r, installed: i)
+    }
+
+    public func running() async throws -> [RunningModel] {
+        try await (get("api/ps") as PSResponse).models
+    }
+
+    public func installed() async throws -> [InstalledModel] {
+        try await (get("api/tags") as TagsResponse).models
+            .sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
     }
 
     /// Frees the model's memory now.
@@ -120,16 +126,8 @@ public struct OllamaClient: Sendable {
         return d
     }()
 
-    /// Ollama sends Go timestamps with up to 9 fractional digits, which ISO8601DateFormatter rejects.
+    /// Ollama sends Go timestamps with up to 9 fractional digits.
     public static func parseDate(_ s: String) -> Date? {
-        var trimmed = s
-        if let dot = s.firstIndex(of: "."),
-           let zone = s[dot...].firstIndex(where: { $0 == "Z" || $0 == "+" || $0 == "-" }) {
-            let fraction = s[s.index(after: dot)..<zone].prefix(3)
-            trimmed = String(s[..<dot]) + "." + fraction.padding(toLength: 3, withPad: "0", startingAt: 0) + s[zone...]
-        }
-        let f = ISO8601DateFormatter()
-        f.formatOptions = trimmed.contains(".") ? [.withInternetDateTime, .withFractionalSeconds] : [.withInternetDateTime]
-        return f.date(from: trimmed)
+        try? Date.ISO8601FormatStyle(includingFractionalSeconds: true).parse(s)
     }
 }
