@@ -34,6 +34,8 @@ final class Monitor {
     }
 
     @ObservationIgnored private var task: Task<Void, Never>?
+    @ObservationIgnored private var refreshCount = 0
+    @ObservationIgnored private var appliedRefresh = 0
     @ObservationIgnored private let notifier = NotificationDelegate()
     private static let defaults = UserDefaults.standard
     private var defaults: UserDefaults { Self.defaults }
@@ -75,11 +77,14 @@ final class Monitor {
     }
 
     func refresh() async {
-        let url = apiURL
-        guard let client else { apply(.offline("The API URL in Settings isn't valid.")); return }
+        // The poll loop, Load/Unload and ⌘R can overlap; a slow older answer must not overwrite a newer one.
+        refreshCount += 1
+        let id = refreshCount, url = apiURL
+        guard let client else { appliedRefresh = id; apply(.offline("The API URL in Settings isn't valid.")); return }
         let next: Status
         do { next = .online(try await client.snapshot()) } catch { next = .offline(error.localizedDescription) }
-        guard url == apiURL else { return } // Settings changed the server while this was in flight.
+        guard url == apiURL, id > appliedRefresh else { return } // Server changed, or a newer refresh already landed.
+        appliedRefresh = id
         apply(next)
     }
 
@@ -92,9 +97,7 @@ final class Monitor {
             notify("Ollama is running", "Version \(s.version) on \(displayHost)")
         case (.online(let old), .online(let new)) where notifyModels:
             // Skip models the person just loaded or unloaded from the popover.
-            let before = Set(old.running.map(\.name)), after = Set(new.running.map(\.name))
-            let loaded = after.subtracting(before).subtracting(busy).sorted()
-            let unloaded = before.subtracting(after).subtracting(busy).sorted()
+            let (loaded, unloaded) = new.modelChanges(since: old, ignoring: busy)
             if !loaded.isEmpty { notify("Model loaded", loaded.joined(separator: ", ")) }
             if !unloaded.isEmpty { notify("Model unloaded", unloaded.joined(separator: ", ")) }
         default:

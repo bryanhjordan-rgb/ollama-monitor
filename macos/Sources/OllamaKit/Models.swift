@@ -84,6 +84,13 @@ public struct ServerSnapshot: Sendable, Equatable {
         self.running = running
         self.installed = installed
     }
+
+    /// Names of models loaded and unloaded since `old`, sorted, leaving out `ignoring`.
+    public func modelChanges(since old: ServerSnapshot, ignoring: Set<String> = []) -> (loaded: [String], unloaded: [String]) {
+        let before = Set(old.running.map(\.name)), after = Set(running.map(\.name))
+        return (after.subtracting(before).subtracting(ignoring).sorted(),
+                before.subtracting(after).subtracting(ignoring).sorted())
+    }
 }
 
 struct PSResponse: Decodable { var models: [RunningModel] }

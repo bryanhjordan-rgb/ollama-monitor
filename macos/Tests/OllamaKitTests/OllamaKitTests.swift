@@ -64,6 +64,18 @@ let tagsJSON = """
     #expect(Format.placement(gpuShare: 0) == "CPU")
 }
 
+@Test func modelChanges() {
+    func snap(_ names: String...) -> ServerSnapshot {
+        ServerSnapshot(version: "1", running: names.map { RunningModel(name: $0, size: 1) }, installed: [])
+    }
+    let c = snap("b", "c", "d").modelChanges(since: snap("a", "b"))
+    #expect(c.loaded == ["c", "d"])
+    #expect(c.unloaded == ["a"])
+    let busy = snap("b", "c").modelChanges(since: snap("a", "b"), ignoring: ["a", "c"])
+    #expect(busy.loaded.isEmpty && busy.unloaded.isEmpty)
+    #expect(snap("a").modelChanges(since: snap("a")).loaded.isEmpty)
+}
+
 @Test func urlValidationAndAuth() throws {
     #expect(OllamaClient.validate("localhost:11434") == nil)
     #expect(OllamaClient.validate("ftp://x") == nil)
