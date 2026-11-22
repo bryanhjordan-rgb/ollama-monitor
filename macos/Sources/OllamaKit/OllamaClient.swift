@@ -52,6 +52,11 @@ public struct OllamaClient: Sendable {
         return "\(host):\(port)"
     }
 
+    /// True when the server is on this Mac, so "Open Ollama" can help.
+    public var isLocal: Bool {
+        ["localhost", "127.0.0.1", "::1", "[::1]"].contains(baseURL.host()?.lowercased() ?? "")
+    }
+
     public func snapshot() async throws -> ServerSnapshot {
         async let v: VersionResponse = get("api/version")
         async let ps: PSResponse = get("api/ps")

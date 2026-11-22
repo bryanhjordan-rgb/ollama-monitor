@@ -68,6 +68,9 @@ public struct InstalledModel: Decodable, Sendable, Equatable, Identifiable {
 
     /// Capabilities worth a badge; every model can do "completion".
     public var badges: [String] { (capabilities ?? []).filter { $0 != "completion" } }
+
+    /// Embedding-only models can't be loaded with /api/generate. Older servers send no capabilities.
+    public var canGenerate: Bool { capabilities?.contains("completion") ?? true }
 }
 
 /// Everything the popover shows, fetched in one poll.

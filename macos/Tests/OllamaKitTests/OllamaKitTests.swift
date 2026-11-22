@@ -35,6 +35,9 @@ let tagsJSON = """
     #expect(tags.models[0].modifiedAt != nil)
     #expect(tags.models[1].details?.summary == "3.2B · Q4_K_M")
     #expect(tags.models[1].badges.isEmpty)
+    #expect(tags.models[0].canGenerate)
+    #expect(tags.models[1].canGenerate) // no capabilities: assume it can
+    #expect(!InstalledModel(name: "e", size: 1, capabilities: ["embedding"]).canGenerate)
 }
 
 @Test func parsesGoTimestamps() {
@@ -70,5 +73,7 @@ let tagsJSON = """
     #expect(c.authorization == "Basic " + Data("bob:p@ss".utf8).base64EncodedString())
     #expect(c.displayHost == "ollama.example.com")
     #expect(try OllamaClient(urlString: "http://localhost:11434").displayHost == "localhost")
+    #expect(try OllamaClient(urlString: "http://127.0.0.1:11434").isLocal)
+    #expect(!c.isLocal)
     #expect(throws: OllamaError.self) { try OllamaClient(urlString: "nope") }
 }
