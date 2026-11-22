@@ -26,7 +26,7 @@ A lightweight cross-platform system tray application to monitor Ollama AI models
 - 🔀 **Multi-Model Support**: Displays all actively running models as individual dedicated rows in the tray menu and grouped in the hover tooltip.
 - 🔔 **System Notifications**: Minimal, non-intrusive desktop notifications on model state changes.
 - 🚀 **Windows Startup Configuration**: Native checkmark option directly in the tray menu to automatically run at Windows startup.
-- ⚙️ **Customizable Connection**: Dynamic API URL setup with support for HTTPS proxies and SSL/TLS validation bypass.
+- ⚙️ **Customizable Connection**: Dynamic API URL setup with support for HTTPS proxies (TLS certificates verified by default; set `"insecure_tls": true` in `settings.json` to bypass for self-signed certs).
 - 🎯 **Color-Coded Status Indicators**:
   - 🟢 Green: Models are loaded and actively running
   - 🔵 Blue: Ollama service is idle (no model loaded)
@@ -79,7 +79,7 @@ cd macos
 ./build.sh --snapshot DIR  # renders every popover state in light and dark to PNGs
 swift test --scratch-path ~/Library/Developer/OllamaMonitor/test-build
 ```
-Needs Xcode (Swift 6.2+). Unlike the Go app it verifies TLS certificates.
+Needs Xcode (Swift 6.2+).
 
 ---
 
