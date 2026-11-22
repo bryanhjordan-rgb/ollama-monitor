@@ -2,7 +2,7 @@ package monitor
 
 import (
 	"fmt"
-	"net/url"
+	"runtime"
 	"strings"
 	"sync"
 	"time"
@@ -12,7 +12,6 @@ import (
 )
 
 var (
-	currentModel       = "Waiting..."
 	lastStatus         = ""
 	mStatusPlaceholder *systray.MenuItem
 	mModelSlots        []*systray.MenuItem
@@ -34,9 +33,8 @@ func changeAPIURL() {
 		return
 	}
 
-	newURL = strings.TrimSpace(newURL)
-	parsedURL, err := url.Parse(newURL)
-	if err != nil || newURL == "" || !strings.HasPrefix(newURL, "http") {
+	cleanedURL, parsedURL, err := validateAPIURL(newURL)
+	if err != nil {
 		_ = zenity.Error(
 			"Invalid API URL format. It must start with http:// or https://",
 			zenity.Title("Error"),
@@ -45,7 +43,7 @@ func changeAPIURL() {
 	}
 
 	settingsLock.Lock()
-	settings.APIURL = newURL
+	settings.APIURL = cleanedURL
 	settingsLock.Unlock()
 
 	saveSettings()
@@ -71,11 +69,10 @@ func updateStatusLoop() {
 			systray.SetTooltip("Ollama Service: Offline")
 			mStatusPlaceholder.SetTitle("Ollama Not Running")
 			mStatusPlaceholder.Show()
-			
+
 			for _, m := range mModelSlots {
 				m.Hide()
 			}
-			currentModel = "Ollama Not Running"
 			interval = 10 * time.Second
 
 		case StateIdle:
@@ -83,34 +80,40 @@ func updateStatusLoop() {
 			systray.SetTooltip("Ollama Service: Idle")
 			mStatusPlaceholder.SetTitle("No Model Running")
 			mStatusPlaceholder.Show()
-			
+
 			for _, m := range mModelSlots {
 				m.Hide()
 			}
-			currentModel = "No Model Running"
 			interval = 10 * time.Second
 
 		case StateActive:
 			systray.SetIcon(iconGreen)
-			
+
 			status := strings.Join(models, ", ")
 			tooltip := fmt.Sprintf("Models: %s", status)
 			if len(tooltip) > 127 {
 				tooltip = tooltip[:124] + "..."
 			}
 			systray.SetTooltip(tooltip)
-			
+
 			mStatusPlaceholder.Hide()
-			
+
+			overflow := len(models) > len(mModelSlots)
+			limit := len(mModelSlots)
+			if overflow {
+				limit--
+			}
 			for i := 0; i < len(mModelSlots); i++ {
-				if i < len(models) {
+				if i < limit && i < len(models) {
 					mModelSlots[i].SetTitle(models[i])
+					mModelSlots[i].Show()
+				} else if overflow && i == len(mModelSlots)-1 {
+					mModelSlots[i].SetTitle(fmt.Sprintf("+%d more", len(models)-limit))
 					mModelSlots[i].Show()
 				} else {
 					mModelSlots[i].Hide()
 				}
 			}
-			currentModel = status
 			interval = 3 * time.Second
 		}
 
@@ -142,19 +145,24 @@ func onReady() {
 	
 	systray.AddSeparator()
 	
-	mStartup := systray.AddMenuItem("Run at Startup", "")
-	settingsLock.Lock()
-	isStartup := settings.Startup
-	settingsLock.Unlock()
-	if isStartup {
-		mStartup.Check()
-	} else {
-		mStartup.Uncheck()
+	var mStartup *systray.MenuItem
+	var startupCh chan struct{}
+	if runtime.GOOS == "windows" {
+		mStartup = systray.AddMenuItem("Run at Startup", "")
+		settingsLock.Lock()
+		isStartup := settings.Startup
+		settingsLock.Unlock()
+		if isStartup {
+			mStartup.Check()
+		} else {
+			mStartup.Uncheck()
+		}
+		startupCh = mStartup.ClickedCh
 	}
 
 	mAPI := systray.AddMenuItem("Change API URL...", "")
 	mAbout := systray.AddMenuItem("About...", "")
-	
+
 	systray.AddSeparator()
 	mExit := systray.AddMenuItem("Exit", "")
 
@@ -165,34 +173,40 @@ func onReady() {
 	go func() {
 		for {
 			select {
-			case <-mStartup.ClickedCh:
+			case <-stopCh:
+				return
+
+			case <-startupCh:
 				settingsLock.Lock()
-				settings.Startup = !settings.Startup
-				newStartup := settings.Startup
+				want := !settings.Startup
 				settingsLock.Unlock()
-				
-				saveSettings()
-				if newStartup {
-					mStartup.Check()
-					if err := toggleStartup(true); err != nil {
-						appLogger.Printf("Failed to enable startup: %v", err)
+
+				if err := toggleStartup(want); err != nil {
+					appLogger.Printf("Failed to configure startup (%v): %v", want, err)
+					if want {
 						_ = zenity.Error(fmt.Sprintf("Failed to configure Windows startup: %v", err), zenity.Title("Error"))
 					}
+					continue
+				}
+
+				settingsLock.Lock()
+				settings.Startup = want
+				settingsLock.Unlock()
+				saveSettings()
+				if want {
+					mStartup.Check()
 				} else {
 					mStartup.Uncheck()
-					if err := toggleStartup(false); err != nil {
-						appLogger.Printf("Failed to disable startup: %v", err)
-					}
 				}
-				
+
 			case <-mAPI.ClickedCh:
 				appLogger.Println("Change API URL clicked")
 				go changeAPIURL()
-				
+
 			case <-mAbout.ClickedCh:
 				appLogger.Println("About clicked")
 				go showAbout()
-				
+
 			case <-mExit.ClickedCh:
 				appLogger.Println("Exit clicked, shutting down")
 				systray.Quit()
@@ -215,8 +229,8 @@ func Run() {
 	setupLogging()
 	loadSettings()
 	initHTTPClient()
-	initIcons()
 	registerAUMID()
+	initIcons()
 
 	systray.Run(onReady, onExit)
 }

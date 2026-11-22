@@ -3,9 +3,11 @@ package monitor
 import (
 	"crypto/tls"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
 	"net/url"
+	"slices"
 	"strings"
 	"time"
 )
@@ -34,6 +36,7 @@ type PSResponse struct {
 var (
 	client            *http.Client
 	lastRunningModels []string
+	notifyFn          = sendNotification
 )
 
 func initHTTPClient() {
@@ -55,13 +58,13 @@ func initHTTPClient() {
 	}
 }
 
-func sliceContains(slice []string, val string) bool {
-	for _, item := range slice {
-		if item == val {
-			return true
-		}
+func validateAPIURL(raw string) (string, *url.URL, error) {
+	cleaned := strings.TrimRight(strings.TrimSpace(raw), "/")
+	u, err := url.Parse(cleaned)
+	if err != nil || (u.Scheme != "http" && u.Scheme != "https") || u.Host == "" {
+		return "", nil, errors.New("invalid API URL: must start with http:// or https://")
 	}
-	return false
+	return cleaned, u, nil
 }
 
 func notifyModelChanges(currentModels []string) {
@@ -74,27 +77,39 @@ func notifyModelChanges(currentModels []string) {
 
 	var started []string
 	for _, m := range currentModels {
-		if !sliceContains(lastRunningModels, m) {
+		if !slices.Contains(lastRunningModels, m) {
 			started = append(started, m)
 		}
 	}
 
 	var stopped []string
 	for _, m := range lastRunningModels {
-		if !sliceContains(currentModels, m) {
+		if !slices.Contains(currentModels, m) {
 			stopped = append(stopped, m)
 		}
 	}
 
 	if len(started) > 0 {
-		sendNotification("Model Started", strings.Join(started, ", "))
+		notifyFn("Model Started", strings.Join(started, ", "))
 	}
 	if len(stopped) > 0 {
-		sendNotification("Model Stopped", strings.Join(stopped, ", "))
+		notifyFn("Model Stopped", strings.Join(stopped, ", "))
 	}
 
 	lastRunningModels = currentModels
 	lastStatus = strings.Join(currentModels, ", ")
+}
+
+func markOffline(logMsg string) {
+	if lastStatus == "Ollama Not Running" {
+		return
+	}
+	appLogger.Print(logMsg)
+	if lastStatus != "" {
+		notifyFn("Ollama Service Stopped", "Could not connect to Ollama")
+	}
+	lastStatus = "Ollama Not Running"
+	lastRunningModels = nil
 }
 
 func getRunningModels() (int, []string) {
@@ -102,16 +117,16 @@ func getRunningModels() (int, []string) {
 	apiURL := settings.APIURL
 	settingsLock.Unlock()
 
-	parsedURL, err := url.Parse(apiURL)
+	cleanedURL, parsedURL, err := validateAPIURL(apiURL)
 	if err != nil {
-		appLogger.Printf("Invalid API URL: %v", err)
+		markOffline(fmt.Sprintf("Invalid API URL: %v", err))
 		return StateOffline, nil
 	}
 
-	endpoint := fmt.Sprintf("%s/api/ps", apiURL)
+	endpoint := fmt.Sprintf("%s/api/ps", cleanedURL)
 	req, err := http.NewRequest("GET", endpoint, nil)
 	if err != nil {
-		appLogger.Printf("Failed to create request: %v", err)
+		markOffline(fmt.Sprintf("Failed to create request: %v", err))
 		return StateOffline, nil
 	}
 
@@ -123,33 +138,32 @@ func getRunningModels() (int, []string) {
 
 	resp, err := client.Do(req)
 	if err != nil {
-		if lastStatus != "Ollama Not Running" {
-			appLogger.Printf("Connection error: %v", err)
-			sendNotification("Ollama Service Stopped", "Could not connect to Ollama")
-			lastStatus = "Ollama Not Running"
-			lastRunningModels = nil
-		}
+		markOffline(fmt.Sprintf("Connection error: %v", err))
 		return StateOffline, nil
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		appLogger.Printf("API returned status code: %d", resp.StatusCode)
+		markOffline(fmt.Sprintf("API returned status code: %d", resp.StatusCode))
 		return StateOffline, nil
 	}
 
 	var psResp PSResponse
 	if err := json.NewDecoder(resp.Body).Decode(&psResp); err != nil {
-		appLogger.Printf("Failed to decode response: %v", err)
+		markOffline(fmt.Sprintf("Failed to decode response: %v", err))
 		return StateOffline, nil
 	}
 
 	if len(psResp.Models) > 0 {
 		var models []string
 		for _, m := range psResp.Models {
-			models = append(models, fmt.Sprintf("%s (%s)", m.Name, m.Details.ParameterSize))
+			if m.Details.ParameterSize != "" {
+				models = append(models, fmt.Sprintf("%s (%s)", m.Name, m.Details.ParameterSize))
+			} else {
+				models = append(models, m.Name)
+			}
 		}
-		
+
 		notifyModelChanges(models)
 		return StateActive, models
 	}

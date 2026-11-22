@@ -29,8 +29,11 @@ func registerAUMID() {
 		if err == nil {
 			execDir := filepath.Dir(execPath)
 			iconPath := filepath.Join(execDir, "logo.png")
-			_ = os.WriteFile(iconPath, iconBlue, 0644)
-			_ = k.SetStringValue("IconUri", iconPath)
+			if err := os.WriteFile(iconPath, iconBlue, 0644); err != nil {
+				appLogger.Printf("Failed to write notification icon: %v", err)
+			} else {
+				_ = k.SetStringValue("IconUri", iconPath)
+			}
 		}
 	}
 
@@ -52,8 +55,10 @@ func sendNotification(title, message string) {
 	execPath, err := os.Executable()
 	var iconPath string
 	if err == nil {
-		execDir := filepath.Dir(execPath)
-		iconPath = filepath.Join(execDir, "logo.png")
+		candidate := filepath.Join(filepath.Dir(execPath), "logo.png")
+		if _, statErr := os.Stat(candidate); statErr == nil {
+			iconPath = candidate
+		}
 	}
 
 	notification := toast.Notification{

@@ -5,9 +5,6 @@ import (
 )
 
 // Embed icons using paths relative to this file's folder (monitor/icons/)
-//go:embed icons/icon.ico
-var iconIco []byte
-
 //go:embed icons/icon_red.png
 var iconRed []byte
 
