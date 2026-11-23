@@ -110,7 +110,7 @@
       "file_type": "code",
       "norm_label": "installedrow",
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L263"
+      "source_location": "L290"
     },
     {
       "id": "macos_sources_ollamamonitor_popoverview_modelcard",
@@ -136,7 +136,7 @@
       "file_type": "code",
       "norm_label": "offlineview",
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L324"
+      "source_location": "L375"
     },
     {
       "id": "macos_sources_ollamamonitor_popoverview_popoverview",
@@ -184,11 +184,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 18,
-      "community_name": "Foundation",
+      "community_name": "Monitor.swift",
       "file_type": "code",
       "norm_label": "notificationdelegate",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L184"
+      "source_location": "L202"
     },
     {
       "id": "macos_sources_ollamakit_models_installedmodel",
@@ -282,19 +282,6 @@
       "source_location": "L92"
     },
     {
-      "id": "macos_sources_ollamakit_ollamaclient_ollamaerror",
-      "label": "OllamaError",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "RunningModel",
-      "file_type": "code",
-      "norm_label": "ollamaerror",
-      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L3"
-    },
-    {
       "id": "macos_sources_ollamamonitor_snapshot_fixture",
       "label": "Fixture",
       "_callable": true,
@@ -322,13 +309,26 @@
             "callee": "dataCorrupted",
             "receiver_type": "DecodingError",
             "lang": "swift",
-            "line": "L122"
+            "line": "L126"
           }
         ]
       },
       "norm_label": "ollamaclient",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
       "source_location": "L16"
+    },
+    {
+      "id": "macos_sources_ollamakit_ollamaclient_ollamaerror",
+      "label": "OllamaError",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "OllamaClient",
+      "file_type": "code",
+      "norm_label": "ollamaerror",
+      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
+      "source_location": "L3"
     },
     {
       "id": "macos_sources_ollamamonitor_monitor_monitor",
@@ -357,17 +357,17 @@
       "source_location": "L8"
     },
     {
-      "id": "macos_tests_ollamamonitortests_monitortests_monitorstuburlprotocol",
-      "label": "MonitorStubURLProtocol",
+      "id": "macos_sources_ollamamonitor_modelstorage_modelstorage",
+      "label": "ModelStorage",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 5,
-      "community_name": "MonitorTests.swift",
+      "community_name": ".manifest",
       "file_type": "code",
-      "norm_label": "monitorstuburlprotocol",
-      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
-      "source_location": "L6"
+      "norm_label": "modelstorage",
+      "source_file": "macos/Sources/OllamaMonitor/ModelStorage.swift",
+      "source_location": "L3"
     },
     {
       "id": "macos_tests_ollamakittests_ollamakittests_stuburlprotocol",
@@ -376,11 +376,24 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "OllamaKitTests.swift",
+      "community_name": "StubURLProtocol",
       "file_type": "code",
       "norm_label": "stuburlprotocol",
       "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
       "source_location": "L96"
+    },
+    {
+      "id": "macos_tests_ollamamonitortests_monitortests_monitorstuburlprotocol",
+      "label": "MonitorStubURLProtocol",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "StubURLProtocol",
+      "file_type": "code",
+      "norm_label": "monitorstuburlprotocol",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L6"
     },
     {
       "id": "macos_sources_ollamakit_format_format",
@@ -417,7 +430,7 @@
       "file_type": "code",
       "norm_label": ".symbol()",
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L312"
+      "source_location": "L363"
     },
     {
       "id": "macos_sources_ollamamonitor_settingsview_settingsview_applyurl",
@@ -535,11 +548,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 18,
-      "community_name": "Foundation",
+      "community_name": "Monitor.swift",
       "file_type": "code",
       "norm_label": ".usernotificationcenter()",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L185"
+      "source_location": "L203"
     },
     {
       "id": "macos_sources_ollamakit_models_installedmodel_init",
@@ -611,7 +624,19 @@
       "file_type": "code",
       "norm_label": ".check()",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L109"
+      "source_location": "L113"
+    },
+    {
+      "id": "macos_sources_ollamakit_ollamaclient_ollamaclient_delete",
+      "label": ".delete()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "OllamaClient",
+      "file_type": "code",
+      "norm_label": ".delete()",
+      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
+      "source_location": "L86"
     },
     {
       "id": "macos_sources_ollamakit_ollamaclient_ollamaclient_get",
@@ -627,13 +652,13 @@
             "callee": "decode",
             "receiver_type": "Self",
             "lang": "swift",
-            "line": "L97"
+            "line": "L101"
           }
         ]
       },
       "norm_label": ".get()",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L94"
+      "source_location": "L98"
     },
     {
       "id": "macos_sources_ollamakit_ollamaclient_ollamaclient_init",
@@ -681,29 +706,7 @@
       "file_type": "code",
       "norm_label": ".parsedate()",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L130"
-    },
-    {
-      "id": "macos_sources_ollamakit_ollamaclient_ollamaclient_post",
-      "label": ".post()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "OllamaClient",
-      "file_type": "code",
-      "metadata": {
-        "unresolved_calls": [
-          {
-            "callee": "data",
-            "receiver_type": "JSONSerialization",
-            "lang": "swift",
-            "line": "L104"
-          }
-        ]
-      },
-      "norm_label": ".post()",
-      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L100"
+      "source_location": "L134"
     },
     {
       "id": "macos_sources_ollamakit_ollamaclient_ollamaclient_request",
@@ -715,7 +718,7 @@
       "file_type": "code",
       "norm_label": ".request()",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L88"
+      "source_location": "L92"
     },
     {
       "id": "macos_sources_ollamakit_ollamaclient_ollamaclient_running",
@@ -728,6 +731,28 @@
       "norm_label": ".running()",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
       "source_location": "L67"
+    },
+    {
+      "id": "macos_sources_ollamakit_ollamaclient_ollamaclient_send",
+      "label": ".send()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "OllamaClient",
+      "file_type": "code",
+      "metadata": {
+        "unresolved_calls": [
+          {
+            "callee": "data",
+            "receiver_type": "JSONSerialization",
+            "lang": "swift",
+            "line": "L108"
+          }
+        ]
+      },
+      "norm_label": ".send()",
+      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
+      "source_location": "L104"
     },
     {
       "id": "macos_sources_ollamakit_ollamaclient_ollamaclient_snapshot",
@@ -766,6 +791,64 @@
       "source_location": "L39"
     },
     {
+      "id": "macos_tests_ollamakittests_ollamakittests_clienterrorparsing",
+      "label": "clientErrorParsing()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "OllamaClient",
+      "file_type": "code",
+      "norm_label": "clienterrorparsing()",
+      "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
+      "source_location": "L200"
+    },
+    {
+      "id": "macos_tests_ollamakittests_ollamakittests_clientsnapshotrunningandactions",
+      "label": "clientSnapshotRunningAndActions()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "OllamaClient",
+      "file_type": "code",
+      "metadata": {
+        "unresolved_calls": [
+          {
+            "callee": "jsonObject",
+            "receiver_type": "JSONSerialization",
+            "lang": "swift",
+            "line": "L154"
+          }
+        ]
+      },
+      "norm_label": "clientsnapshotrunningandactions()",
+      "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
+      "source_location": "L137"
+    },
+    {
+      "id": "macos_tests_ollamakittests_ollamakittests_countdown",
+      "label": "countdown()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "OllamaClient",
+      "file_type": "code",
+      "norm_label": "countdown()",
+      "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
+      "source_location": "L49"
+    },
+    {
+      "id": "macos_tests_ollamakittests_ollamakittests_decodesinstalledmodels",
+      "label": "decodesInstalledModels()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "OllamaClient",
+      "file_type": "code",
+      "norm_label": "decodesinstalledmodels()",
+      "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
+      "source_location": "L31"
+    },
+    {
       "id": "macos_tests_ollamakittests_ollamakittests_decodesrunningmodels",
       "label": "decodesRunningModels()",
       "_callable": true,
@@ -776,6 +859,30 @@
       "norm_label": "decodesrunningmodels()",
       "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
       "source_location": "L20"
+    },
+    {
+      "id": "macos_tests_ollamakittests_ollamakittests_httpresponse",
+      "label": "httpResponse()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "OllamaClient",
+      "file_type": "code",
+      "norm_label": "httpresponse()",
+      "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
+      "source_location": "L133"
+    },
+    {
+      "id": "macos_tests_ollamakittests_ollamakittests_modelchanges",
+      "label": "modelChanges()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "OllamaClient",
+      "file_type": "code",
+      "norm_label": "modelchanges()",
+      "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
+      "source_location": "L66"
     },
     {
       "id": "macos_tests_ollamakittests_ollamakittests_parsesgotimestamps",
@@ -811,7 +918,19 @@
       "file_type": "code",
       "norm_label": ".apply()",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L137"
+      "source_location": "L142"
+    },
+    {
+      "id": "macos_sources_ollamamonitor_monitor_monitor_delete",
+      "label": ".delete()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Monitor",
+      "file_type": "code",
+      "norm_label": ".delete()",
+      "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
+      "source_location": "L164"
     },
     {
       "id": "macos_sources_ollamamonitor_monitor_monitor_init",
@@ -823,7 +942,7 @@
       "file_type": "code",
       "norm_label": ".init()",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L48"
+      "source_location": "L49"
     },
     {
       "id": "macos_sources_ollamamonitor_monitor_monitor_load",
@@ -835,7 +954,7 @@
       "file_type": "code",
       "norm_label": ".load()",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L157"
+      "source_location": "L162"
     },
     {
       "id": "macos_sources_ollamamonitor_monitor_monitor_notify",
@@ -851,13 +970,13 @@
             "callee": "current",
             "receiver_type": "UNUserNotificationCenter",
             "lang": "swift",
-            "line": "L179"
+            "line": "L197"
           }
         ]
       },
       "norm_label": ".notify()",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L172"
+      "source_location": "L190"
     },
     {
       "id": "macos_sources_ollamamonitor_monitor_monitor_perform",
@@ -869,7 +988,19 @@
       "file_type": "code",
       "norm_label": ".perform()",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L159"
+      "source_location": "L172"
+    },
+    {
+      "id": "macos_sources_ollamamonitor_monitor_monitor_popoveropened",
+      "label": ".popoverOpened()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Monitor",
+      "file_type": "code",
+      "norm_label": ".popoveropened()",
+      "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
+      "source_location": "L108"
     },
     {
       "id": "macos_sources_ollamamonitor_monitor_monitor_refresh",
@@ -881,7 +1012,7 @@
       "file_type": "code",
       "norm_label": ".refresh()",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L112"
+      "source_location": "L113"
     },
     {
       "id": "macos_sources_ollamamonitor_monitor_monitor_start",
@@ -897,25 +1028,25 @@
             "callee": "cancel",
             "receiver_type": "Task",
             "lang": "swift",
-            "line": "L90"
+            "line": "L91"
           },
           {
             "callee": "current",
             "receiver_type": "UNUserNotificationCenter",
             "lang": "swift",
-            "line": "L93"
+            "line": "L94"
           },
           {
             "callee": "sleep",
             "receiver_type": "Task",
             "lang": "swift",
-            "line": "L102"
+            "line": "L103"
           }
         ]
       },
       "norm_label": ".start()",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L89"
+      "source_location": "L90"
     },
     {
       "id": "macos_sources_ollamamonitor_monitor_monitor_unload",
@@ -927,27 +1058,37 @@
       "file_type": "code",
       "norm_label": ".unload()",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L156"
+      "source_location": "L161"
     },
     {
-      "id": "macos_sources_ollamamonitor_monitor_monitor_popoveropened",
-      "label": ".popoverOpened()",
+      "id": "macos_tests_ollamamonitortests_monitortests_deleterejectsachangedconnection",
+      "label": "deleteRejectsAChangedConnection()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
+      "community": 4,
+      "community_name": "Monitor",
       "file_type": "code",
-      "norm_label": ".popoveropened()",
-      "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L107"
+      "metadata": {
+        "unresolved_calls": [
+          {
+            "callee": "record",
+            "receiver_type": "Issue",
+            "lang": "swift",
+            "line": "L214"
+          }
+        ]
+      },
+      "norm_label": "deleterejectsachangedconnection()",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L212"
     },
     {
       "id": "macos_tests_ollamamonitortests_monitortests_dropsoutoforderrefresh",
       "label": "dropsOutOfOrderRefresh()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
+      "community": 4,
+      "community_name": "Monitor",
       "file_type": "code",
       "metadata": {
         "unresolved_calls": [
@@ -974,96 +1115,32 @@
       "label": "isolatedDefaults()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
+      "community": 4,
+      "community_name": "Monitor",
       "file_type": "code",
       "norm_label": "isolateddefaults()",
       "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
       "source_location": "L62"
     },
     {
-      "id": "macos_tests_ollamamonitortests_monitortests_monitorstuburlprotocol_caninit",
-      "label": ".canInit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
-      "file_type": "code",
-      "norm_label": ".caninit()",
-      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
-      "source_location": "L20"
-    },
-    {
-      "id": "macos_tests_ollamamonitortests_monitortests_monitorstuburlprotocol_canonicalrequest",
-      "label": ".canonicalRequest()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
-      "file_type": "code",
-      "norm_label": ".canonicalrequest()",
-      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
-      "source_location": "L21"
-    },
-    {
       "id": "macos_tests_ollamamonitortests_monitortests_monitorstuburlprotocol_makesession",
       "label": ".makeSession()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
+      "community": 4,
+      "community_name": "Monitor",
       "file_type": "code",
       "norm_label": ".makesession()",
       "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
       "source_location": "L11"
     },
     {
-      "id": "macos_tests_ollamamonitortests_monitortests_monitorstuburlprotocol_startloading",
-      "label": ".startLoading()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
-      "file_type": "code",
-      "metadata": {
-        "unresolved_calls": [
-          {
-            "callee": "withLock",
-            "receiver_type": "Self",
-            "lang": "swift",
-            "line": "L25"
-          },
-          {
-            "callee": "handlers",
-            "receiver_type": "Self",
-            "lang": "swift",
-            "line": "L25"
-          }
-        ]
-      },
-      "norm_label": ".startloading()",
-      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
-      "source_location": "L23"
-    },
-    {
-      "id": "macos_tests_ollamamonitortests_monitortests_monitorstuburlprotocol_stoploading",
-      "label": ".stopLoading()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
-      "file_type": "code",
-      "norm_label": ".stoploading()",
-      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
-      "source_location": "L44"
-    },
-    {
       "id": "macos_tests_ollamamonitortests_monitortests_ok",
       "label": "ok()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
+      "community": 4,
+      "community_name": "Monitor",
       "file_type": "code",
       "norm_label": "ok()",
       "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
@@ -1074,8 +1151,8 @@
       "label": "previewMonitorPopoverOpenedMakesNoRequests()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
+      "community": 4,
+      "community_name": "Monitor",
       "file_type": "code",
       "metadata": {
         "unresolved_calls": [
@@ -1092,12 +1169,34 @@
       "source_location": "L176"
     },
     {
+      "id": "macos_tests_ollamamonitortests_monitortests_runningpolldoesnotdiscardinstalledrefresh",
+      "label": "runningPollDoesNotDiscardInstalledRefresh()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Monitor",
+      "file_type": "code",
+      "metadata": {
+        "unresolved_calls": [
+          {
+            "callee": "record",
+            "receiver_type": "Issue",
+            "lang": "swift",
+            "line": "L250"
+          }
+        ]
+      },
+      "norm_label": "runningpolldoesnotdiscardinstalledrefresh()",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L227"
+    },
+    {
       "id": "macos_tests_ollamamonitortests_monitortests_serverswitchdiscardsinflightandclearserror",
       "label": "serverSwitchDiscardsInFlightAndClearsError()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
+      "community": 4,
+      "community_name": "Monitor",
       "file_type": "code",
       "metadata": {
         "unresolved_calls": [
@@ -1124,94 +1223,80 @@
       "label": "snapshotResponse()",
       "_callable": true,
       "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
+      "community": 4,
+      "community_name": "Monitor",
       "file_type": "code",
       "norm_label": "snapshotresponse()",
       "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
       "source_location": "L51"
     },
     {
-      "id": "macos_tests_ollamakittests_ollamakittests_clienterrorparsing",
-      "label": "clientErrorParsing()",
+      "id": "macos_sources_ollamamonitor_modelstorage_modelstorage_manifest",
+      "label": ".manifest()",
       "_callable": true,
       "_origin": "ast",
-      "community": 6,
-      "community_name": "OllamaKitTests.swift",
+      "community": 5,
+      "community_name": ".manifest",
       "file_type": "code",
-      "norm_label": "clienterrorparsing()",
-      "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
-      "source_location": "L199"
+      "norm_label": ".manifest()",
+      "source_file": "macos/Sources/OllamaMonitor/ModelStorage.swift",
+      "source_location": "L12"
     },
     {
-      "id": "macos_tests_ollamakittests_ollamakittests_clientsnapshotrunningandactions",
-      "label": "clientSnapshotRunningAndActions()",
+      "id": "macos_sources_ollamamonitor_modelstorage_modelstorage_validcomponent",
+      "label": ".validComponent()",
       "_callable": true,
       "_origin": "ast",
-      "community": 6,
-      "community_name": "OllamaKitTests.swift",
+      "community": 5,
+      "community_name": ".manifest",
       "file_type": "code",
       "metadata": {
         "unresolved_calls": [
           {
-            "callee": "jsonObject",
-            "receiver_type": "JSONSerialization",
+            "callee": "range",
+            "receiver_type": "Substring",
             "lang": "swift",
-            "line": "L154"
+            "line": "L39"
           }
         ]
       },
-      "norm_label": "clientsnapshotrunningandactions()",
-      "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
-      "source_location": "L137"
+      "norm_label": ".validcomponent()",
+      "source_file": "macos/Sources/OllamaMonitor/ModelStorage.swift",
+      "source_location": "L37"
     },
     {
-      "id": "macos_tests_ollamakittests_ollamakittests_countdown",
-      "label": "countdown()",
+      "id": "macos_sources_ollamamonitor_popoverview_installedrow_reveal",
+      "label": ".reveal()",
       "_callable": true,
       "_origin": "ast",
-      "community": 6,
-      "community_name": "OllamaKitTests.swift",
+      "community": 5,
+      "community_name": ".manifest",
       "file_type": "code",
-      "norm_label": "countdown()",
-      "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
-      "source_location": "L49"
+      "metadata": {
+        "unresolved_calls": [
+          {
+            "callee": "activateFileViewerSelecting",
+            "receiver_type": "NSWorkspace",
+            "lang": "swift",
+            "line": "L360"
+          }
+        ]
+      },
+      "norm_label": ".reveal()",
+      "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
+      "source_location": "L355"
     },
     {
-      "id": "macos_tests_ollamakittests_ollamakittests_decodesinstalledmodels",
-      "label": "decodesInstalledModels()",
+      "id": "macos_tests_ollamamonitortests_monitortests_findsmodelmanifestinbothstorelayouts",
+      "label": "findsModelManifestInBothStoreLayouts()",
       "_callable": true,
       "_origin": "ast",
-      "community": 6,
-      "community_name": "OllamaKitTests.swift",
+      "community": 5,
+      "community_name": ".manifest",
       "file_type": "code",
-      "norm_label": "decodesinstalledmodels()",
-      "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
-      "source_location": "L31"
-    },
-    {
-      "id": "macos_tests_ollamakittests_ollamakittests_httpresponse",
-      "label": "httpResponse()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "OllamaKitTests.swift",
-      "file_type": "code",
-      "norm_label": "httpresponse()",
-      "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
-      "source_location": "L133"
-    },
-    {
-      "id": "macos_tests_ollamakittests_ollamakittests_modelchanges",
-      "label": "modelChanges()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "OllamaKitTests.swift",
-      "file_type": "code",
-      "norm_label": "modelchanges()",
-      "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
-      "source_location": "L66"
+      "norm_label": "findsmodelmanifestinbothstorelayouts()",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L190"
     },
     {
       "id": "macos_tests_ollamakittests_ollamakittests_stuburlprotocol_caninit",
@@ -1219,7 +1304,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "OllamaKitTests.swift",
+      "community_name": "StubURLProtocol",
       "file_type": "code",
       "norm_label": ".caninit()",
       "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
@@ -1231,7 +1316,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "OllamaKitTests.swift",
+      "community_name": "StubURLProtocol",
       "file_type": "code",
       "norm_label": ".canonicalrequest()",
       "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
@@ -1243,7 +1328,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "OllamaKitTests.swift",
+      "community_name": "StubURLProtocol",
       "file_type": "code",
       "norm_label": ".makesession()",
       "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
@@ -1255,7 +1340,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "OllamaKitTests.swift",
+      "community_name": "StubURLProtocol",
       "file_type": "code",
       "metadata": {
         "unresolved_calls": [
@@ -1283,11 +1368,75 @@
       "_callable": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "OllamaKitTests.swift",
+      "community_name": "StubURLProtocol",
       "file_type": "code",
       "norm_label": ".stoploading()",
       "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
       "source_location": "L130"
+    },
+    {
+      "id": "macos_tests_ollamamonitortests_monitortests_monitorstuburlprotocol_caninit",
+      "label": ".canInit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "StubURLProtocol",
+      "file_type": "code",
+      "norm_label": ".caninit()",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L20"
+    },
+    {
+      "id": "macos_tests_ollamamonitortests_monitortests_monitorstuburlprotocol_canonicalrequest",
+      "label": ".canonicalRequest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "StubURLProtocol",
+      "file_type": "code",
+      "norm_label": ".canonicalrequest()",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L21"
+    },
+    {
+      "id": "macos_tests_ollamamonitortests_monitortests_monitorstuburlprotocol_startloading",
+      "label": ".startLoading()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "StubURLProtocol",
+      "file_type": "code",
+      "metadata": {
+        "unresolved_calls": [
+          {
+            "callee": "withLock",
+            "receiver_type": "Self",
+            "lang": "swift",
+            "line": "L25"
+          },
+          {
+            "callee": "handlers",
+            "receiver_type": "Self",
+            "lang": "swift",
+            "line": "L25"
+          }
+        ]
+      },
+      "norm_label": ".startloading()",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L23"
+    },
+    {
+      "id": "macos_tests_ollamamonitortests_monitortests_monitorstuburlprotocol_stoploading",
+      "label": ".stopLoading()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "StubURLProtocol",
+      "file_type": "code",
+      "norm_label": ".stoploading()",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L44"
     },
     {
       "id": "macos_sources_ollamakit_format_format_bytes",
@@ -1438,17 +1587,6 @@
       "source_location": "L1"
     },
     {
-      "id": "macos_sources_ollamamonitor_popoverview_headerview_body",
-      "label": ".body",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "HeaderView",
-      "file_type": "code",
-      "norm_label": ".body",
-      "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L99"
-    },
-    {
       "id": "macos_sources_ollamamonitor_popoverview_headerview_color",
       "label": ".color",
       "_origin": "ast",
@@ -1482,6 +1620,17 @@
       "source_location": "L126"
     },
     {
+      "id": "macos_sources_ollamamonitor_popoverview_installedlist_body",
+      "label": ".body",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "HeaderView",
+      "file_type": "code",
+      "norm_label": ".body",
+      "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
+      "source_location": "L243"
+    },
+    {
       "id": "macos_sources_ollamamonitor_popoverview_installedrow_body",
       "label": ".body",
       "_origin": "ast",
@@ -1490,7 +1639,7 @@
       "file_type": "code",
       "norm_label": ".body",
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L274"
+      "source_location": "L301"
     },
     {
       "id": "macos_sources_ollamamonitor_popoverview_installedrow_toobig",
@@ -1501,7 +1650,7 @@
       "file_type": "code",
       "norm_label": ".toobig",
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L270"
+      "source_location": "L297"
     },
     {
       "id": "macos_sources_ollamamonitor_popoverview_modelcard_memoryshare",
@@ -1527,19 +1676,57 @@
             "callee": "urlForApplication",
             "receiver_type": "NSWorkspace",
             "lang": "swift",
-            "line": "L335"
+            "line": "L386"
           },
           {
             "callee": "openApplication",
             "receiver_type": "NSWorkspace",
             "lang": "swift",
-            "line": "L337"
+            "line": "L388"
           }
         ]
       },
       "norm_label": ".body",
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L329"
+      "source_location": "L380"
+    },
+    {
+      "id": "macos_sources_ollamamonitor_popoverview_popoverview_body",
+      "label": ".body",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "HeaderView",
+      "file_type": "code",
+      "metadata": {
+        "unresolved_calls": [
+          {
+            "callee": "activate",
+            "receiver_type": "NSApp",
+            "lang": "swift",
+            "line": "L38"
+          },
+          {
+            "callee": "terminate",
+            "receiver_type": "NSApp",
+            "lang": "swift",
+            "line": "L46"
+          }
+        ]
+      },
+      "norm_label": ".body",
+      "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
+      "source_location": "L10"
+    },
+    {
+      "id": "macos_sources_ollamamonitor_popoverview_popoverview_content",
+      "label": ".content",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "HeaderView",
+      "file_type": "code",
+      "norm_label": ".content",
+      "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
+      "source_location": "L61"
     },
     {
       "id": "macos_sources_ollamamonitor_popoverview_swift_bool",
@@ -2047,7 +2234,7 @@
       "file_type": "code",
       "norm_label": "onexit()",
       "source_file": "monitor/monitor.go",
-      "source_location": "L218"
+      "source_location": "L230"
     },
     {
       "id": "monitor_monitor_onready",
@@ -2058,7 +2245,18 @@
       "file_type": "code",
       "norm_label": "onready()",
       "source_file": "monitor/monitor.go",
-      "source_location": "L128"
+      "source_location": "L135"
+    },
+    {
+      "id": "monitor_monitor_requestrefresh",
+      "label": "requestRefresh()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.go",
+      "file_type": "code",
+      "norm_label": "requestrefresh()",
+      "source_file": "monitor/monitor.go",
+      "source_location": "L62"
     },
     {
       "id": "monitor_monitor_run",
@@ -2069,7 +2267,7 @@
       "file_type": "code",
       "norm_label": "run()",
       "source_file": "monitor/monitor.go",
-      "source_location": "L228"
+      "source_location": "L240"
     },
     {
       "id": "monitor_monitor_showabout",
@@ -2080,7 +2278,7 @@
       "file_type": "code",
       "norm_label": "showabout()",
       "source_file": "monitor/monitor.go",
-      "source_location": "L54"
+      "source_location": "L55"
     },
     {
       "id": "monitor_monitor_test",
@@ -2113,7 +2311,7 @@
       "file_type": "code",
       "norm_label": "testconfigsaveload()",
       "source_file": "monitor/monitor_test.go",
-      "source_location": "L117"
+      "source_location": "L133"
     },
     {
       "id": "monitor_monitor_test_testgetrunningmodelsandnotifications",
@@ -2124,7 +2322,18 @@
       "file_type": "code",
       "norm_label": "testgetrunningmodelsandnotifications()",
       "source_file": "monitor/monitor_test.go",
-      "source_location": "L157"
+      "source_location": "L173"
+    },
+    {
+      "id": "monitor_monitor_test_testrequestrefreshcoalesces",
+      "label": "TestRequestRefreshCoalesces()",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "api.go",
+      "file_type": "code",
+      "norm_label": "testrequestrefreshcoalesces()",
+      "source_file": "monitor/monitor_test.go",
+      "source_location": "L68"
     },
     {
       "id": "monitor_monitor_test_testrotatedwriter",
@@ -2135,7 +2344,7 @@
       "file_type": "code",
       "norm_label": "testrotatedwriter()",
       "source_file": "monitor/monitor_test.go",
-      "source_location": "L68"
+      "source_location": "L84"
     },
     {
       "id": "monitor_monitor_test_testvalidateapiurl",
@@ -2157,7 +2366,7 @@
       "file_type": "code",
       "norm_label": "updatestatusloop()",
       "source_file": "monitor/monitor.go",
-      "source_location": "L61"
+      "source_location": "L69"
     },
     {
       "id": "monitor_psresponse",
@@ -2356,34 +2565,11 @@
       "source_location": "L12"
     },
     {
-      "id": "foundation",
-      "label": "Foundation",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "Foundation",
-      "file_type": "code",
-      "norm_label": "foundation",
-      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
-      "source_location": "L1",
-      "type": "module"
-    },
-    {
-      "id": "macos_sources_ollamakit_ollamaclient",
-      "label": "OllamaClient.swift",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "Foundation",
-      "file_type": "code",
-      "norm_label": "ollamaclient.swift",
-      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L1"
-    },
-    {
       "id": "macos_sources_ollamamonitor_monitor",
       "label": "Monitor.swift",
       "_origin": "ast",
       "community": 18,
-      "community_name": "Foundation",
+      "community_name": "Monitor.swift",
       "file_type": "code",
       "norm_label": "monitor.swift",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
@@ -2394,7 +2580,7 @@
       "label": "NSObject",
       "_origin": "ast",
       "community": 18,
-      "community_name": "Foundation",
+      "community_name": "Monitor.swift",
       "file_type": "code",
       "norm_label": "nsobject",
       "source_file": "",
@@ -2405,7 +2591,7 @@
       "label": "UNNotification",
       "_origin": "ast",
       "community": 18,
-      "community_name": "Foundation",
+      "community_name": "Monitor.swift",
       "file_type": "code",
       "norm_label": "unnotification",
       "source_file": "",
@@ -2416,7 +2602,7 @@
       "label": "UNNotificationPresentationOptions",
       "_origin": "ast",
       "community": 18,
-      "community_name": "Foundation",
+      "community_name": "Monitor.swift",
       "file_type": "code",
       "norm_label": "unnotificationpresentationoptions",
       "source_file": "",
@@ -2427,7 +2613,7 @@
       "label": "UNUserNotificationCenter",
       "_origin": "ast",
       "community": 18,
-      "community_name": "Foundation",
+      "community_name": "Monitor.swift",
       "file_type": "code",
       "norm_label": "unusernotificationcenter",
       "source_file": "",
@@ -2438,7 +2624,7 @@
       "label": "UNUserNotificationCenterDelegate",
       "_origin": "ast",
       "community": 18,
-      "community_name": "Foundation",
+      "community_name": "Monitor.swift",
       "file_type": "code",
       "norm_label": "unusernotificationcenterdelegate",
       "source_file": "",
@@ -2449,7 +2635,7 @@
       "label": "UserNotifications",
       "_origin": "ast",
       "community": 18,
-      "community_name": "Foundation",
+      "community_name": "Monitor.swift",
       "file_type": "code",
       "norm_label": "usernotifications",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
@@ -2519,17 +2705,6 @@
       "community_name": "RunningModel",
       "file_type": "code",
       "norm_label": "identifiable",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "localizederror",
-      "label": "LocalizedError",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "RunningModel",
-      "file_type": "code",
-      "norm_label": "localizederror",
       "source_file": "",
       "source_location": ""
     },
@@ -2688,28 +2863,6 @@
       "source_location": ""
     },
     {
-      "id": "macos_sources_ollamakit_ollamaclient_ollamaerror_errordescription",
-      "label": ".errorDescription",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "RunningModel",
-      "file_type": "code",
-      "norm_label": ".errordescription",
-      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L7"
-    },
-    {
-      "id": "macos_sources_ollamakit_ollamaclient_swift_int",
-      "label": "Int",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "RunningModel",
-      "file_type": "code",
-      "norm_label": "int",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "macos_sources_ollamamonitor_snapshot_fixture_active",
       "label": ".active",
       "_origin": "ast",
@@ -2730,6 +2883,41 @@
       "norm_label": ".idle",
       "source_file": "macos/Sources/OllamaMonitor/Snapshot.swift",
       "source_location": "L78"
+    },
+    {
+      "id": "sendable",
+      "label": "Sendable",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "RunningModel",
+      "file_type": "code",
+      "norm_label": "sendable",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "todo",
+      "label": "todo.md",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "todo.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "todo.md",
+      "source_file": "todo.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "todo_ollama_monitor",
+      "label": "Ollama Monitor",
+      "_origin": "ast",
+      "community": 20,
+      "community_name": "todo.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "ollama monitor",
+      "source_file": "todo.md",
+      "source_location": "L1"
     },
     {
       "id": "monitor_constants",
@@ -2756,6 +2944,18 @@
       "type": "package"
     },
     {
+      "id": "foundation",
+      "label": "Foundation",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "OllamaClient",
+      "file_type": "code",
+      "norm_label": "foundation",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L1",
+      "type": "module"
+    },
+    {
       "id": "jsondecoder",
       "label": "JSONDecoder",
       "_origin": "ast",
@@ -2765,6 +2965,28 @@
       "norm_label": "jsondecoder",
       "source_file": "",
       "source_location": ""
+    },
+    {
+      "id": "localizederror",
+      "label": "LocalizedError",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "OllamaClient",
+      "file_type": "code",
+      "norm_label": "localizederror",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "macos_sources_ollamakit_ollamaclient",
+      "label": "OllamaClient.swift",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "OllamaClient",
+      "file_type": "code",
+      "norm_label": "ollamaclient.swift",
+      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
+      "source_location": "L1"
     },
     {
       "id": "macos_sources_ollamakit_ollamaclient_ollamaclient_displayhost",
@@ -2798,6 +3020,17 @@
       "norm_label": "badurl",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
       "source_location": "L4"
+    },
+    {
+      "id": "macos_sources_ollamakit_ollamaclient_ollamaerror_errordescription",
+      "label": ".errorDescription",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "OllamaClient",
+      "file_type": "code",
+      "norm_label": ".errordescription",
+      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
+      "source_location": "L7"
     },
     {
       "id": "macos_sources_ollamakit_ollamaclient_ollamaerror_http",
@@ -2840,6 +3073,17 @@
       "community_name": "OllamaClient",
       "file_type": "code",
       "norm_label": "date",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "macos_sources_ollamakit_ollamaclient_swift_int",
+      "label": "Int",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "OllamaClient",
+      "file_type": "code",
+      "norm_label": "int",
       "source_file": "",
       "source_location": ""
     },
@@ -2896,7 +3140,51 @@
       "file_type": "code",
       "norm_label": ".client",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L72"
+      "source_location": "L73"
+    },
+    {
+      "id": "macos_tests_ollamakittests_ollamakittests",
+      "label": "OllamaKitTests.swift",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "OllamaClient",
+      "file_type": "code",
+      "norm_label": "ollamakittests.swift",
+      "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
+      "source_location": "L1"
+    },
+    {
+      "id": "macos_tests_ollamakittests_ollamakittests_swift_httpurlresponse",
+      "label": "HTTPURLResponse",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "OllamaClient",
+      "file_type": "code",
+      "norm_label": "httpurlresponse",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "macos_tests_ollamakittests_ollamakittests_swift_int",
+      "label": "Int",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "OllamaClient",
+      "file_type": "code",
+      "norm_label": "int",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "macos_tests_ollamakittests_ollamakittests_swift_url",
+      "label": "URL",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "OllamaClient",
+      "file_type": "code",
+      "norm_label": "url",
+      "source_file": "",
+      "source_location": ""
     },
     {
       "id": "t",
@@ -2908,6 +3196,18 @@
       "norm_label": "t",
       "source_file": "",
       "source_location": ""
+    },
+    {
+      "id": "testing",
+      "label": "Testing",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "OllamaClient",
+      "file_type": "code",
+      "norm_label": "testing",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L2",
+      "type": "module"
     },
     {
       "id": "timeinterval",
@@ -2951,7 +3251,7 @@
       "file_type": "code",
       "norm_label": ".displayhost",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L73"
+      "source_location": "L74"
     },
     {
       "id": "macos_sources_ollamamonitor_monitor_monitor_notifymodels",
@@ -2995,7 +3295,7 @@
       "file_type": "code",
       "norm_label": ".running",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L75"
+      "source_location": "L76"
     },
     {
       "id": "macos_sources_ollamamonitor_monitor_monitor_showcount",
@@ -3017,7 +3317,7 @@
       "file_type": "code",
       "norm_label": ".symbol",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L80"
+      "source_location": "L81"
     },
     {
       "id": "macos_sources_ollamamonitor_monitor_status_connecting",
@@ -3141,7 +3441,7 @@
       "source_location": ""
     },
     {
-      "id": "macos_sources_ollamamonitor_popoverview_installedlist_body",
+      "id": "macos_sources_ollamamonitor_popoverview_headerview_body",
       "label": ".body",
       "_origin": "ast",
       "community": 4,
@@ -3149,18 +3449,84 @@
       "file_type": "code",
       "norm_label": ".body",
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L241"
+      "source_location": "L99"
     },
     {
-      "id": "macos_sources_ollamamonitor_popoverview_popoverview_content",
-      "label": ".content",
+      "id": "macos_tests_ollamamonitortests_monitortests",
+      "label": "MonitorTests.swift",
       "_origin": "ast",
       "community": 4,
       "community_name": "Monitor",
       "file_type": "code",
-      "norm_label": ".content",
-      "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L61"
+      "norm_label": "monitortests.swift",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L1"
+    },
+    {
+      "id": "macos_tests_ollamamonitortests_monitortests_swift_data",
+      "label": "Data",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Monitor",
+      "file_type": "code",
+      "norm_label": "data",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "macos_tests_ollamamonitortests_monitortests_swift_httpurlresponse",
+      "label": "HTTPURLResponse",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Monitor",
+      "file_type": "code",
+      "norm_label": "httpurlresponse",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "macos_tests_ollamamonitortests_monitortests_swift_string",
+      "label": "String",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Monitor",
+      "file_type": "code",
+      "norm_label": "string",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "macos_tests_ollamamonitortests_monitortests_swift_url",
+      "label": "URL",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Monitor",
+      "file_type": "code",
+      "norm_label": "url",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "macos_tests_ollamamonitortests_monitortests_swift_urlsession",
+      "label": "URLSession",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Monitor",
+      "file_type": "code",
+      "norm_label": "urlsession",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "macos_tests_ollamamonitortests_monitortests_swift_userdefaults",
+      "label": "UserDefaults",
+      "_origin": "ast",
+      "community": 4,
+      "community_name": "Monitor",
+      "file_type": "code",
+      "norm_label": "userdefaults",
+      "source_file": "",
+      "source_location": ""
     },
     {
       "id": "never",
@@ -3174,148 +3540,11 @@
       "source_location": ""
     },
     {
-      "id": "macos_sources_ollamamonitor_popoverview_popoverview_body",
-      "label": ".body",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
-      "file_type": "code",
-      "metadata": {
-        "unresolved_calls": [
-          {
-            "callee": "activate",
-            "receiver_type": "NSApp",
-            "lang": "swift",
-            "line": "L38"
-          },
-          {
-            "callee": "terminate",
-            "receiver_type": "NSApp",
-            "lang": "swift",
-            "line": "L46"
-          }
-        ]
-      },
-      "norm_label": ".body",
-      "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L10"
-    },
-    {
-      "id": "macos_tests_ollamamonitortests_monitortests",
-      "label": "MonitorTests.swift",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
-      "file_type": "code",
-      "norm_label": "monitortests.swift",
-      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
-      "source_location": "L1"
-    },
-    {
-      "id": "macos_tests_ollamamonitortests_monitortests_swift_bool",
-      "label": "Bool",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
-      "file_type": "code",
-      "norm_label": "bool",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "macos_tests_ollamamonitortests_monitortests_swift_data",
-      "label": "Data",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
-      "file_type": "code",
-      "norm_label": "data",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "macos_tests_ollamamonitortests_monitortests_swift_handler",
-      "label": "Handler",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
-      "file_type": "code",
-      "norm_label": "handler",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "macos_tests_ollamamonitortests_monitortests_swift_httpurlresponse",
-      "label": "HTTPURLResponse",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
-      "file_type": "code",
-      "norm_label": "httpurlresponse",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "macos_tests_ollamamonitortests_monitortests_swift_string",
-      "label": "String",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
-      "file_type": "code",
-      "norm_label": "string",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "macos_tests_ollamamonitortests_monitortests_swift_url",
-      "label": "URL",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
-      "file_type": "code",
-      "norm_label": "url",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "macos_tests_ollamamonitortests_monitortests_swift_urlrequest",
-      "label": "URLRequest",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
-      "file_type": "code",
-      "norm_label": "urlrequest",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "macos_tests_ollamamonitortests_monitortests_swift_urlsession",
-      "label": "URLSession",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
-      "file_type": "code",
-      "norm_label": "urlsession",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "macos_tests_ollamamonitortests_monitortests_swift_userdefaults",
-      "label": "UserDefaults",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
-      "file_type": "code",
-      "norm_label": "userdefaults",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "ollamamonitor",
       "label": "OllamaMonitor",
       "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
+      "community": 4,
+      "community_name": "Monitor",
       "file_type": "code",
       "norm_label": "ollamamonitor",
       "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
@@ -3326,53 +3555,95 @@
       "id": "task",
       "label": "Task",
       "_origin": "ast",
-      "community": 5,
-      "community_name": "MonitorTests.swift",
+      "community": 4,
+      "community_name": "Monitor",
       "file_type": "code",
       "norm_label": "task",
       "source_file": "",
       "source_location": ""
     },
     {
-      "id": "testing",
-      "label": "Testing",
+      "id": "macos_sources_ollamamonitor_modelstorage",
+      "label": "ModelStorage.swift",
       "_origin": "ast",
       "community": 5,
-      "community_name": "MonitorTests.swift",
+      "community_name": ".manifest",
       "file_type": "code",
-      "norm_label": "testing",
-      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
-      "source_location": "L2",
-      "type": "module"
+      "norm_label": "modelstorage.swift",
+      "source_file": "macos/Sources/OllamaMonitor/ModelStorage.swift",
+      "source_location": "L1"
     },
     {
-      "id": "urlprotocol",
-      "label": "URLProtocol",
+      "id": "macos_sources_ollamamonitor_modelstorage_modelstorage_directory",
+      "label": ".directory",
       "_origin": "ast",
       "community": 5,
-      "community_name": "MonitorTests.swift",
+      "community_name": ".manifest",
       "file_type": "code",
-      "norm_label": "urlprotocol",
+      "metadata": {
+        "unresolved_calls": [
+          {
+            "callee": "environment",
+            "receiver_type": "ProcessInfo",
+            "lang": "swift",
+            "line": "L5"
+          }
+        ]
+      },
+      "norm_label": ".directory",
+      "source_file": "macos/Sources/OllamaMonitor/ModelStorage.swift",
+      "source_location": "L4"
+    },
+    {
+      "id": "macos_sources_ollamamonitor_modelstorage_swift_bool",
+      "label": "Bool",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": ".manifest",
+      "file_type": "code",
+      "norm_label": "bool",
       "source_file": "",
       "source_location": ""
     },
     {
-      "id": "macos_tests_ollamakittests_ollamakittests",
-      "label": "OllamaKitTests.swift",
+      "id": "macos_sources_ollamamonitor_modelstorage_swift_string",
+      "label": "String",
       "_origin": "ast",
-      "community": 6,
-      "community_name": "OllamaKitTests.swift",
+      "community": 5,
+      "community_name": ".manifest",
       "file_type": "code",
-      "norm_label": "ollamakittests.swift",
-      "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
-      "source_location": "L1"
+      "norm_label": "string",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "macos_sources_ollamamonitor_modelstorage_swift_url",
+      "label": "URL",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": ".manifest",
+      "file_type": "code",
+      "norm_label": "url",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "substring",
+      "label": "Substring",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": ".manifest",
+      "file_type": "code",
+      "norm_label": "substring",
+      "source_file": "",
+      "source_location": ""
     },
     {
       "id": "macos_tests_ollamakittests_ollamakittests_swift_bool",
       "label": "Bool",
       "_origin": "ast",
       "community": 6,
-      "community_name": "OllamaKitTests.swift",
+      "community_name": "StubURLProtocol",
       "file_type": "code",
       "norm_label": "bool",
       "source_file": "",
@@ -3383,31 +3654,9 @@
       "label": "Handler",
       "_origin": "ast",
       "community": 6,
-      "community_name": "OllamaKitTests.swift",
+      "community_name": "StubURLProtocol",
       "file_type": "code",
       "norm_label": "handler",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "macos_tests_ollamakittests_ollamakittests_swift_httpurlresponse",
-      "label": "HTTPURLResponse",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "OllamaKitTests.swift",
-      "file_type": "code",
-      "norm_label": "httpurlresponse",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "macos_tests_ollamakittests_ollamakittests_swift_int",
-      "label": "Int",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "OllamaKitTests.swift",
-      "file_type": "code",
-      "norm_label": "int",
       "source_file": "",
       "source_location": ""
     },
@@ -3416,20 +3665,9 @@
       "label": "String",
       "_origin": "ast",
       "community": 6,
-      "community_name": "OllamaKitTests.swift",
+      "community_name": "StubURLProtocol",
       "file_type": "code",
       "norm_label": "string",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "macos_tests_ollamakittests_ollamakittests_swift_url",
-      "label": "URL",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "OllamaKitTests.swift",
-      "file_type": "code",
-      "norm_label": "url",
       "source_file": "",
       "source_location": ""
     },
@@ -3438,7 +3676,7 @@
       "label": "URLRequest",
       "_origin": "ast",
       "community": 6,
-      "community_name": "OllamaKitTests.swift",
+      "community_name": "StubURLProtocol",
       "file_type": "code",
       "norm_label": "urlrequest",
       "source_file": "",
@@ -3449,20 +3687,53 @@
       "label": "URLSession",
       "_origin": "ast",
       "community": 6,
-      "community_name": "OllamaKitTests.swift",
+      "community_name": "StubURLProtocol",
       "file_type": "code",
       "norm_label": "urlsession",
       "source_file": "",
       "source_location": ""
     },
     {
-      "id": "sendable",
-      "label": "Sendable",
+      "id": "macos_tests_ollamamonitortests_monitortests_swift_bool",
+      "label": "Bool",
       "_origin": "ast",
       "community": 6,
-      "community_name": "OllamaKitTests.swift",
+      "community_name": "StubURLProtocol",
       "file_type": "code",
-      "norm_label": "sendable",
+      "norm_label": "bool",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "macos_tests_ollamamonitortests_monitortests_swift_handler",
+      "label": "Handler",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "StubURLProtocol",
+      "file_type": "code",
+      "norm_label": "handler",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "macos_tests_ollamamonitortests_monitortests_swift_urlrequest",
+      "label": "URLRequest",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "StubURLProtocol",
+      "file_type": "code",
+      "norm_label": "urlrequest",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "urlprotocol",
+      "label": "URLProtocol",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "StubURLProtocol",
+      "file_type": "code",
+      "norm_label": "urlprotocol",
       "source_file": "",
       "source_location": ""
     },
@@ -3553,6 +3824,30 @@
       "norm_label": ".body",
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
       "source_location": "L168"
+    },
+    {
+      "id": "claude",
+      "label": "claude.md",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "claude.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "claude.md",
+      "source_file": "claude.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_working_on_ollama_monitor",
+      "label": "Working on Ollama Monitor",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "claude.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "working on ollama monitor",
+      "source_file": "claude.md",
+      "source_location": "L1"
     },
     {
       "id": "monitor_icons_icon_blue_blue_status_color",
@@ -3651,7 +3946,7 @@
       "author": null,
       "captured_at": null,
       "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
+      "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "code",
       "norm_label": "build.sh (build, sign, install)",
@@ -3666,7 +3961,7 @@
       "author": null,
       "captured_at": null,
       "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
+      "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "code",
       "norm_label": "ollamakit (api client, types, formatting)",
@@ -3681,7 +3976,7 @@
       "author": null,
       "captured_at": null,
       "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
+      "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "code",
       "norm_label": "ollamamonitor app target (menubarextra, monitor poller, views)",
@@ -3696,7 +3991,7 @@
       "author": null,
       "captured_at": null,
       "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
+      "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
       "norm_label": "adaptive polling (10s idle, 3s running)",
@@ -3711,7 +4006,7 @@
       "author": null,
       "captured_at": null,
       "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
+      "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
       "norm_label": "proxy support and ssl bypass",
@@ -3726,7 +4021,7 @@
       "author": null,
       "captured_at": null,
       "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
+      "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
       "norm_label": "startup registry path fix",
@@ -3741,7 +4036,7 @@
       "author": null,
       "captured_at": null,
       "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
+      "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
       "norm_label": "done-when criteria",
@@ -3756,7 +4051,7 @@
       "author": null,
       "captured_at": null,
       "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
+      "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
       "norm_label": "installed models list with load",
@@ -3771,7 +4066,7 @@
       "author": null,
       "captured_at": null,
       "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
+      "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
       "norm_label": "seven build iterations",
@@ -3786,7 +4081,7 @@
       "author": null,
       "captured_at": null,
       "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
+      "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
       "norm_label": "loaded model card (memory bar, countdown, unload)",
@@ -3801,7 +4096,7 @@
       "author": null,
       "captured_at": null,
       "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
+      "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
       "norm_label": "notifications on load/unload/offline",
@@ -3816,7 +4111,7 @@
       "author": null,
       "captured_at": null,
       "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
+      "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
       "norm_label": "ollama http api (/api/ps, /api/tags, /api/generate)",
@@ -3831,7 +4126,7 @@
       "author": null,
       "captured_at": null,
       "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
+      "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
       "norm_label": "menu-bar popover ui",
@@ -3846,7 +4141,7 @@
       "author": null,
       "captured_at": null,
       "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
+      "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
       "norm_label": "settings window",
@@ -3861,116 +4156,11 @@
       "author": null,
       "captured_at": null,
       "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
+      "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
       "norm_label": "snapshot mode (--snapshot renders pngs)",
       "source_file": "macos/PLAN.md",
-      "source_location": null,
-      "source_url": null
-    },
-    {
-      "id": "changelog_release_history",
-      "label": "Changelog release history",
-      "_origin": "semantic",
-      "author": null,
-      "captured_at": null,
-      "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
-      "contributor": null,
-      "file_type": "document",
-      "norm_label": "changelog release history",
-      "source_file": "CHANGELOG.md",
-      "source_location": null,
-      "source_url": null
-    },
-    {
-      "id": "changelog_v1_0_0",
-      "label": "v1.0.0 initial release",
-      "_origin": "semantic",
-      "author": null,
-      "captured_at": null,
-      "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
-      "contributor": null,
-      "file_type": "document",
-      "norm_label": "v1.0.0 initial release",
-      "source_file": "CHANGELOG.md",
-      "source_location": null,
-      "source_url": null
-    },
-    {
-      "id": "changelog_v1_1_0",
-      "label": "v1.1.0 proxy support release",
-      "_origin": "semantic",
-      "author": null,
-      "captured_at": null,
-      "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
-      "contributor": null,
-      "file_type": "document",
-      "norm_label": "v1.1.0 proxy support release",
-      "source_file": "CHANGELOG.md",
-      "source_location": null,
-      "source_url": null
-    },
-    {
-      "id": "changelog_v1_2_0",
-      "label": "v1.2.0 Go rewrite release",
-      "_origin": "semantic",
-      "author": null,
-      "captured_at": null,
-      "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
-      "contributor": null,
-      "file_type": "document",
-      "norm_label": "v1.2.0 go rewrite release",
-      "source_file": "CHANGELOG.md",
-      "source_location": null,
-      "source_url": null
-    },
-    {
-      "id": "macos_plan_macos_app_plan",
-      "label": "Ollama Monitor for macOS plan",
-      "_origin": "semantic",
-      "author": null,
-      "captured_at": null,
-      "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
-      "contributor": null,
-      "file_type": "document",
-      "norm_label": "ollama monitor for macos plan",
-      "source_file": "macos/PLAN.md",
-      "source_location": null,
-      "source_url": null
-    },
-    {
-      "id": "changelog_python_to_go_migration",
-      "label": "Migration from Python to Go",
-      "_origin": "semantic",
-      "author": null,
-      "captured_at": null,
-      "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
-      "contributor": null,
-      "file_type": "rationale",
-      "norm_label": "migration from python to go",
-      "source_file": "CHANGELOG.md",
-      "source_location": null,
-      "source_url": null
-    },
-    {
-      "id": "changelog_windows_toast_icon_fix",
-      "label": "Windows toast notification icon fix (embedded icon)",
-      "_origin": "semantic",
-      "author": null,
-      "captured_at": null,
-      "community": 7,
-      "community_name": "Ollama Monitor for macOS plan",
-      "contributor": null,
-      "file_type": "rationale",
-      "norm_label": "windows toast notification icon fix (embedded icon)",
-      "source_file": "CHANGELOG.md",
       "source_location": null,
       "source_url": null
     },
@@ -3980,7 +4170,7 @@
       "_origin": "semantic",
       "author": null,
       "captured_at": null,
-      "community": 9,
+      "community": 7,
       "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
@@ -3995,7 +4185,7 @@
       "_origin": "semantic",
       "author": null,
       "captured_at": null,
-      "community": 9,
+      "community": 7,
       "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
@@ -4010,7 +4200,7 @@
       "_origin": "semantic",
       "author": null,
       "captured_at": null,
-      "community": 9,
+      "community": 7,
       "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
@@ -4025,7 +4215,7 @@
       "_origin": "semantic",
       "author": null,
       "captured_at": null,
-      "community": 9,
+      "community": 7,
       "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
@@ -4040,7 +4230,7 @@
       "_origin": "semantic",
       "author": null,
       "captured_at": null,
-      "community": 9,
+      "community": 7,
       "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
@@ -4055,7 +4245,7 @@
       "_origin": "semantic",
       "author": null,
       "captured_at": null,
-      "community": 9,
+      "community": 7,
       "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
@@ -4070,7 +4260,7 @@
       "_origin": "semantic",
       "author": null,
       "captured_at": null,
-      "community": 9,
+      "community": 7,
       "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
@@ -4085,7 +4275,7 @@
       "_origin": "semantic",
       "author": null,
       "captured_at": null,
-      "community": 9,
+      "community": 7,
       "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
@@ -4100,7 +4290,7 @@
       "_origin": "semantic",
       "author": null,
       "captured_at": null,
-      "community": 9,
+      "community": 7,
       "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
@@ -4115,7 +4305,7 @@
       "_origin": "semantic",
       "author": null,
       "captured_at": null,
-      "community": 9,
+      "community": 7,
       "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
@@ -4130,7 +4320,7 @@
       "_origin": "semantic",
       "author": null,
       "captured_at": null,
-      "community": 9,
+      "community": 7,
       "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
@@ -4145,7 +4335,7 @@
       "_origin": "semantic",
       "author": null,
       "captured_at": null,
-      "community": 9,
+      "community": 7,
       "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
@@ -4160,7 +4350,7 @@
       "_origin": "semantic",
       "author": null,
       "captured_at": null,
-      "community": 9,
+      "community": 7,
       "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "concept",
@@ -4170,12 +4360,87 @@
       "source_url": null
     },
     {
+      "id": "changelog_release_history",
+      "label": "Changelog release history",
+      "_origin": "semantic",
+      "author": null,
+      "captured_at": null,
+      "community": 7,
+      "community_name": "Ollama Monitor",
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "changelog release history",
+      "source_file": "CHANGELOG.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "changelog_v1_0_0",
+      "label": "v1.0.0 initial release",
+      "_origin": "semantic",
+      "author": null,
+      "captured_at": null,
+      "community": 7,
+      "community_name": "Ollama Monitor",
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "v1.0.0 initial release",
+      "source_file": "CHANGELOG.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "changelog_v1_1_0",
+      "label": "v1.1.0 proxy support release",
+      "_origin": "semantic",
+      "author": null,
+      "captured_at": null,
+      "community": 7,
+      "community_name": "Ollama Monitor",
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "v1.1.0 proxy support release",
+      "source_file": "CHANGELOG.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "changelog_v1_2_0",
+      "label": "v1.2.0 Go rewrite release",
+      "_origin": "semantic",
+      "author": null,
+      "captured_at": null,
+      "community": 7,
+      "community_name": "Ollama Monitor",
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "v1.2.0 go rewrite release",
+      "source_file": "CHANGELOG.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "macos_plan_macos_app_plan",
+      "label": "Ollama Monitor for macOS plan",
+      "_origin": "semantic",
+      "author": null,
+      "captured_at": null,
+      "community": 7,
+      "community_name": "Ollama Monitor",
+      "contributor": null,
+      "file_type": "document",
+      "norm_label": "ollama monitor for macos plan",
+      "source_file": "macos/PLAN.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
       "id": "readme_changelog",
       "label": "CHANGELOG.md",
       "_origin": "semantic",
       "author": null,
       "captured_at": null,
-      "community": 9,
+      "community": 7,
       "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "document",
@@ -4190,7 +4455,7 @@
       "_origin": "semantic",
       "author": null,
       "captured_at": null,
-      "community": 9,
+      "community": 7,
       "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "document",
@@ -4205,7 +4470,7 @@
       "_origin": "semantic",
       "author": null,
       "captured_at": null,
-      "community": 9,
+      "community": 7,
       "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "document",
@@ -4215,12 +4480,42 @@
       "source_url": null
     },
     {
+      "id": "changelog_python_to_go_migration",
+      "label": "Migration from Python to Go",
+      "_origin": "semantic",
+      "author": null,
+      "captured_at": null,
+      "community": 7,
+      "community_name": "Ollama Monitor",
+      "contributor": null,
+      "file_type": "rationale",
+      "norm_label": "migration from python to go",
+      "source_file": "CHANGELOG.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
+      "id": "changelog_windows_toast_icon_fix",
+      "label": "Windows toast notification icon fix (embedded icon)",
+      "_origin": "semantic",
+      "author": null,
+      "captured_at": null,
+      "community": 7,
+      "community_name": "Ollama Monitor",
+      "contributor": null,
+      "file_type": "rationale",
+      "norm_label": "windows toast notification icon fix (embedded icon)",
+      "source_file": "CHANGELOG.md",
+      "source_location": null,
+      "source_url": null
+    },
+    {
       "id": "readme_tls_verification",
       "label": "TLS Verification (insecure_tls option)",
       "_origin": "semantic",
       "author": null,
       "captured_at": null,
-      "community": 9,
+      "community": 7,
       "community_name": "Ollama Monitor",
       "contributor": null,
       "file_type": "rationale",
@@ -4240,19 +4535,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L113",
+      "source_location": "L117",
       "weight": 1.0
     },
     {
-      "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_get",
-      "target": "macos_sources_ollamakit_ollamaclient_ollamaclient_request",
+      "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_delete",
+      "target": "macos_sources_ollamakit_ollamaclient_ollamaclient_send",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L95",
+      "source_location": "L87",
       "weight": 1.0
     },
     {
@@ -4264,7 +4559,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L96",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_get",
+      "target": "macos_sources_ollamakit_ollamaclient_ollamaclient_request",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
+      "source_location": "L99",
       "weight": 1.0
     },
     {
@@ -4305,7 +4612,7 @@
     },
     {
       "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_load",
-      "target": "macos_sources_ollamakit_ollamaclient_ollamaclient_post",
+      "target": "macos_sources_ollamakit_ollamaclient_ollamaclient_send",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4313,30 +4620,6 @@
       "context": "call",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
       "source_location": "L83",
-      "weight": 1.0
-    },
-    {
-      "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_post",
-      "target": "macos_sources_ollamakit_ollamaclient_ollamaclient_request",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L101",
-      "weight": 1.0
-    },
-    {
-      "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_post",
-      "target": "macos_sources_ollamakit_ollamaclient_ollamaclient_check",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L106",
       "weight": 1.0
     },
     {
@@ -4349,6 +4632,30 @@
       "context": "call",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
       "source_location": "L68",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_send",
+      "target": "macos_sources_ollamakit_ollamaclient_ollamaclient_request",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_send",
+      "target": "macos_sources_ollamakit_ollamaclient_ollamaclient_check",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
+      "source_location": "L110",
       "weight": 1.0
     },
     {
@@ -4401,7 +4708,7 @@
     },
     {
       "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_unload",
-      "target": "macos_sources_ollamakit_ollamaclient_ollamaclient_post",
+      "target": "macos_sources_ollamakit_ollamaclient_ollamaclient_send",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4448,6 +4755,18 @@
       "weight": 1.0
     },
     {
+      "source": "macos_sources_ollamamonitor_modelstorage_modelstorage_manifest",
+      "target": "macos_sources_ollamamonitor_modelstorage_modelstorage_validcomponent",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "macos/Sources/OllamaMonitor/ModelStorage.swift",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
       "source": "macos_sources_ollamamonitor_monitor_monitor",
       "target": "macos_sources_ollamamonitor_monitor_notificationdelegate",
       "relation": "calls",
@@ -4456,7 +4775,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L46",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -4480,7 +4799,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L141",
+      "source_location": "L146",
       "weight": 1.0
     },
     {
@@ -4492,7 +4811,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L72",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamamonitor_monitor_monitor_delete",
+      "target": "macos_sources_ollamamonitor_monitor_monitor_perform",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
+      "source_location": "L169",
       "weight": 1.0
     },
     {
@@ -4504,7 +4835,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L157",
+      "source_location": "L162",
       "weight": 1.0
     },
     {
@@ -4516,7 +4847,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L163",
+      "source_location": "L177",
       "weight": 1.0
     },
     {
@@ -4528,7 +4859,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L165",
+      "source_location": "L184",
       "weight": 1.0
     },
     {
@@ -4552,7 +4883,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L109",
+      "source_location": "L110",
       "weight": 1.0
     },
     {
@@ -4564,7 +4895,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L109",
+      "source_location": "L110",
       "weight": 1.0
     },
     {
@@ -4576,7 +4907,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L116",
+      "source_location": "L117",
       "weight": 1.0
     },
     {
@@ -4588,7 +4919,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L120",
+      "source_location": "L123",
       "weight": 1.0
     },
     {
@@ -4600,19 +4931,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L121",
-      "weight": 1.0
-    },
-    {
-      "source": "macos_sources_ollamamonitor_monitor_monitor_start",
-      "target": "task",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L94",
+      "source_location": "L124",
       "weight": 1.0
     },
     {
@@ -4624,7 +4943,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L99",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamamonitor_monitor_monitor_start",
+      "target": "task",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
+      "source_location": "L95",
       "weight": 1.0
     },
     {
@@ -4636,7 +4967,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L156",
+      "source_location": "L161",
       "weight": 1.0
     },
     {
@@ -4660,7 +4991,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L247",
+      "source_location": "L264",
       "weight": 1.0
     },
     {
@@ -4672,7 +5003,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L280",
+      "source_location": "L308",
       "weight": 1.0
     },
     {
@@ -4684,7 +5015,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L288",
+      "source_location": "L316",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamamonitor_popoverview_installedrow_reveal",
+      "target": "macos_sources_ollamamonitor_modelstorage_modelstorage_manifest",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
+      "source_location": "L356",
       "weight": 1.0
     },
     {
@@ -4876,7 +5219,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
-      "source_location": "L200",
+      "source_location": "L201",
       "weight": 1.0
     },
     {
@@ -4888,7 +5231,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
-      "source_location": "L203",
+      "source_location": "L204",
       "weight": 1.0
     },
     {
@@ -4988,6 +5331,42 @@
       "weight": 1.0
     },
     {
+      "source": "macos_tests_ollamamonitortests_monitortests_deleterejectsachangedconnection",
+      "target": "macos_tests_ollamamonitortests_monitortests_monitorstuburlprotocol_makesession",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L213",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_tests_ollamamonitortests_monitortests_deleterejectsachangedconnection",
+      "target": "macos_tests_ollamamonitortests_monitortests_ok",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L215",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_tests_ollamamonitortests_monitortests_deleterejectsachangedconnection",
+      "target": "macos_tests_ollamamonitortests_monitortests_isolateddefaults",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L217",
+      "weight": 1.0
+    },
+    {
       "source": "macos_tests_ollamamonitortests_monitortests_dropsoutoforderrefresh",
       "target": "macos_tests_ollamamonitortests_monitortests_monitorstuburlprotocol_makesession",
       "relation": "calls",
@@ -5024,6 +5403,18 @@
       "weight": 1.0
     },
     {
+      "source": "macos_tests_ollamamonitortests_monitortests_findsmodelmanifestinbothstorelayouts",
+      "target": "macos_sources_ollamamonitor_modelstorage_modelstorage_manifest",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L201",
+      "weight": 1.0
+    },
+    {
       "source": "macos_tests_ollamamonitortests_monitortests_ok",
       "target": "macos_tests_ollamamonitortests_monitortests_swift_httpurlresponse",
       "relation": "calls",
@@ -5057,6 +5448,30 @@
       "context": "call",
       "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
       "source_location": "L181",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_tests_ollamamonitortests_monitortests_runningpolldoesnotdiscardinstalledrefresh",
+      "target": "macos_tests_ollamamonitortests_monitortests_monitorstuburlprotocol_makesession",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L230",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_tests_ollamamonitortests_monitortests_runningpolldoesnotdiscardinstalledrefresh",
+      "target": "macos_tests_ollamamonitortests_monitortests_snapshotresponse",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L237",
       "weight": 1.0
     },
     {
@@ -5216,6 +5631,18 @@
       "weight": 1.0
     },
     {
+      "source": "monitor_monitor_changeapiurl",
+      "target": "monitor_monitor_requestrefresh",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "monitor/monitor.go",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
       "source": "monitor_monitor_onready",
       "target": "monitor_monitor_updatestatusloop",
       "relation": "calls",
@@ -5224,7 +5651,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "monitor/monitor.go",
-      "source_location": "L170",
+      "source_location": "L179",
+      "weight": 1.0
+    },
+    {
+      "source": "monitor_monitor_onready",
+      "target": "monitor_monitor_requestrefresh",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "monitor/monitor.go",
+      "source_location": "L212",
       "weight": 1.0
     },
     {
@@ -5236,7 +5675,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "monitor/monitor.go",
-      "source_location": "L204",
+      "source_location": "L216",
       "weight": 1.0
     },
     {
@@ -5248,7 +5687,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "monitor/monitor.go",
-      "source_location": "L208",
+      "source_location": "L220",
       "weight": 1.0
     },
     {
@@ -5260,7 +5699,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "monitor/monitor_test.go",
-      "source_location": "L118",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -5272,7 +5711,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "monitor/monitor_test.go",
-      "source_location": "L158",
+      "source_location": "L174",
       "weight": 1.0
     },
     {
@@ -5296,7 +5735,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L130",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -5308,7 +5747,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
-      "source_location": "L208",
+      "source_location": "L209",
       "weight": 1.0
     },
     {
@@ -5548,7 +5987,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L116",
+      "source_location": "L120",
       "weight": 1.0
     },
     {
@@ -5636,6 +6075,18 @@
       "weight": 1.0
     },
     {
+      "source": "macos_sources_ollamamonitor_modelstorage_modelstorage",
+      "target": "macos_sources_ollamamonitor_modelstorage_swift_url",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "field",
+      "source_file": "macos/Sources/OllamaMonitor/ModelStorage.swift",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
       "source": "macos_sources_ollamamonitor_monitor_monitor",
       "target": "macos_sources_ollamamonitor_monitor_swift_set",
       "relation": "references",
@@ -5716,7 +6167,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L72",
+      "source_location": "L73",
       "weight": 1.0
     },
     {
@@ -5728,7 +6179,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L75",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
@@ -5740,7 +6191,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L80",
+      "source_location": "L81",
       "weight": 1.0
     },
     {
@@ -5804,6 +6255,18 @@
       "weight": 1.0
     },
     {
+      "source": "macos_sources_ollamamonitor_popoverview_installedlist",
+      "target": "macos_sources_ollamamonitor_popoverview_swift_string",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "field",
+      "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
+      "source_location": "L241",
+      "weight": 1.0
+    },
+    {
       "source": "macos_sources_ollamamonitor_popoverview_installedrow",
       "target": "macos_sources_ollamakit_models_installedmodel",
       "relation": "references",
@@ -5812,7 +6275,19 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L264",
+      "source_location": "L291",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamamonitor_popoverview_installedrow",
+      "target": "macos_sources_ollamamonitor_monitor_monitor",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "field",
+      "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
+      "source_location": "L294",
       "weight": 1.0
     },
     {
@@ -5824,7 +6299,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L268",
+      "source_location": "L295",
       "weight": 1.0
     },
     {
@@ -5836,7 +6311,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L270",
+      "source_location": "L297",
       "weight": 1.0
     },
     {
@@ -5896,7 +6371,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L326",
+      "source_location": "L377",
       "weight": 1.0
     },
     {
@@ -5908,7 +6383,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L327",
+      "source_location": "L378",
       "weight": 1.0
     },
     {
@@ -6173,6 +6648,18 @@
       "context": "import",
       "source_file": "macos/Sources/OllamaMonitor/App.swift",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamamonitor_modelstorage",
+      "target": "foundation",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "macos/Sources/OllamaMonitor/ModelStorage.swift",
+      "source_location": "L1",
       "weight": 1.0
     },
     {
@@ -6616,7 +7103,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L109",
+      "source_location": "L113",
       "weight": 1.0
     },
     {
@@ -6628,7 +7115,19 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L109",
+      "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_delete",
+      "target": "macos_sources_ollamakit_ollamaclient_swift_string",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
+      "source_location": "L86",
       "weight": 1.0
     },
     {
@@ -6640,7 +7139,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L94",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -6688,11 +7187,11 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L130",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
-      "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_post",
+      "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_request",
       "target": "macos_sources_ollamakit_ollamaclient_swift_string",
       "relation": "references",
       "_origin": "ast",
@@ -6700,11 +7199,35 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L100",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
-      "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_post",
+      "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_request",
+      "target": "timeinterval",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
+      "source_location": "L92",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_send",
+      "target": "macos_sources_ollamakit_ollamaclient_swift_string",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_send",
       "target": "sendable",
       "relation": "references",
       "_origin": "ast",
@@ -6712,11 +7235,11 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L100",
+      "source_location": "L104",
       "weight": 1.0
     },
     {
-      "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_post",
+      "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_send",
       "target": "timeinterval",
       "relation": "references",
       "_origin": "ast",
@@ -6724,31 +7247,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L100",
-      "weight": 1.0
-    },
-    {
-      "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_request",
-      "target": "macos_sources_ollamakit_ollamaclient_swift_string",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "parameter_type",
-      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L88",
-      "weight": 1.0
-    },
-    {
-      "source": "macos_sources_ollamakit_ollamaclient_ollamaclient_request",
-      "target": "timeinterval",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "parameter_type",
-      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L88",
+      "source_location": "L104",
       "weight": 1.0
     },
     {
@@ -6776,6 +7275,30 @@
       "weight": 1.0
     },
     {
+      "source": "macos_sources_ollamamonitor_modelstorage_modelstorage_manifest",
+      "target": "macos_sources_ollamamonitor_modelstorage_swift_string",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "macos/Sources/OllamaMonitor/ModelStorage.swift",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamamonitor_modelstorage_modelstorage_validcomponent",
+      "target": "substring",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "macos/Sources/OllamaMonitor/ModelStorage.swift",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
       "source": "macos_sources_ollamamonitor_monitor_monitor_apply",
       "target": "macos_sources_ollamamonitor_monitor_status",
       "relation": "references",
@@ -6784,7 +7307,19 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L137",
+      "source_location": "L142",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamamonitor_monitor_monitor_delete",
+      "target": "macos_sources_ollamamonitor_monitor_swift_string",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
+      "source_location": "L164",
       "weight": 1.0
     },
     {
@@ -6796,7 +7331,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L48",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -6808,7 +7343,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L60",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -6820,7 +7355,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L60",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -6832,7 +7367,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L157",
+      "source_location": "L162",
       "weight": 1.0
     },
     {
@@ -6844,7 +7379,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L172",
+      "source_location": "L190",
       "weight": 1.0
     },
     {
@@ -6856,7 +7391,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L159",
+      "source_location": "L172",
       "weight": 1.0
     },
     {
@@ -6868,7 +7403,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L159",
+      "source_location": "L172",
       "weight": 1.0
     },
     {
@@ -6880,7 +7415,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L112",
+      "source_location": "L113",
       "weight": 1.0
     },
     {
@@ -6892,7 +7427,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L156",
+      "source_location": "L161",
       "weight": 1.0
     },
     {
@@ -6904,7 +7439,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L185",
+      "source_location": "L203",
       "weight": 1.0
     },
     {
@@ -6916,7 +7451,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L185",
+      "source_location": "L203",
       "weight": 1.0
     },
     {
@@ -7108,7 +7643,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "monitor/monitor_test.go",
-      "source_location": "L117",
+      "source_location": "L133",
       "weight": 1.0
     },
     {
@@ -7120,7 +7655,19 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "monitor/monitor_test.go",
-      "source_location": "L157",
+      "source_location": "L173",
+      "weight": 1.0
+    },
+    {
+      "source": "monitor_monitor_test_testrequestrefreshcoalesces",
+      "target": "go_type_testing_t",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "monitor/monitor_test.go",
+      "source_location": "L68",
       "weight": 1.0
     },
     {
@@ -7132,7 +7679,7 @@
       "confidence_score": 1.0,
       "context": "parameter_type",
       "source_file": "monitor/monitor_test.go",
-      "source_location": "L68",
+      "source_location": "L84",
       "weight": 1.0
     },
     {
@@ -7204,7 +7751,7 @@
         "swift_plain_return": true
       },
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L94",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -7219,7 +7766,22 @@
         "swift_plain_return": true
       },
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L88",
+      "source_location": "L92",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamamonitor_modelstorage_modelstorage_validcomponent",
+      "target": "macos_sources_ollamamonitor_modelstorage_swift_bool",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "metadata": {
+        "swift_plain_return": true
+      },
+      "source_file": "macos/Sources/OllamaMonitor/ModelStorage.swift",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -7234,7 +7796,7 @@
         "swift_plain_return": true
       },
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L185",
+      "source_location": "L203",
       "weight": 1.0
     },
     {
@@ -7249,7 +7811,7 @@
         "swift_plain_return": true
       },
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L312",
+      "source_location": "L363",
       "weight": 1.0
     },
     {
@@ -7402,7 +7964,7 @@
       "confidence_score": 1.0,
       "context": "return_type",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L130",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -7427,6 +7989,18 @@
       "context": "return_type",
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
       "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamamonitor_modelstorage_modelstorage_manifest",
+      "target": "macos_sources_ollamamonitor_modelstorage_swift_url",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "return_type",
+      "source_file": "macos/Sources/OllamaMonitor/ModelStorage.swift",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -7581,6 +8155,17 @@
       "weight": 1.0
     },
     {
+      "source": "claude",
+      "target": "claude_working_on_ollama_monitor",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "claude.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
       "source": "macos_build",
       "target": "macos_build_sh__entry",
       "relation": "contains",
@@ -7724,6 +8309,17 @@
       "weight": 1.0
     },
     {
+      "source": "macos_sources_ollamamonitor_modelstorage",
+      "target": "macos_sources_ollamamonitor_modelstorage_modelstorage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "macos/Sources/OllamaMonitor/ModelStorage.swift",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
       "source": "macos_sources_ollamamonitor_monitor",
       "target": "macos_sources_ollamamonitor_monitor_notificationdelegate",
       "relation": "contains",
@@ -7731,7 +8327,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L184",
+      "source_location": "L202",
       "weight": 1.0
     },
     {
@@ -7786,7 +8382,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L263",
+      "source_location": "L290",
       "weight": 1.0
     },
     {
@@ -7797,7 +8393,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L324",
+      "source_location": "L375",
       "weight": 1.0
     },
     {
@@ -7879,17 +8475,6 @@
     },
     {
       "source": "macos_tests_ollamakittests_ollamakittests",
-      "target": "macos_tests_ollamakittests_ollamakittests_clienterrorparsing",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
-      "source_location": "L199",
-      "weight": 1.0
-    },
-    {
-      "source": "macos_tests_ollamakittests_ollamakittests",
       "target": "macos_tests_ollamakittests_ollamakittests_decodesrunningmodels",
       "relation": "contains",
       "_origin": "ast",
@@ -7897,6 +8482,17 @@
       "confidence_score": 1.0,
       "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
       "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_tests_ollamakittests_ollamakittests",
+      "target": "macos_tests_ollamakittests_ollamakittests_clienterrorparsing",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
+      "source_location": "L200",
       "weight": 1.0
     },
     {
@@ -7996,6 +8592,39 @@
       "confidence_score": 1.0,
       "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
       "source_location": "L176",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_tests_ollamamonitortests_monitortests",
+      "target": "macos_tests_ollamamonitortests_monitortests_findsmodelmanifestinbothstorelayouts",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L190",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_tests_ollamamonitortests_monitortests",
+      "target": "macos_tests_ollamamonitortests_monitortests_deleterejectsachangedconnection",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L212",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_tests_ollamamonitortests_monitortests",
+      "target": "macos_tests_ollamamonitortests_monitortests_runningpolldoesnotdiscardinstalledrefresh",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L227",
       "weight": 1.0
     },
     {
@@ -8270,18 +8899,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "monitor/monitor.go",
-      "source_location": "L128",
-      "weight": 1.0
-    },
-    {
-      "source": "monitor_monitor",
-      "target": "monitor_monitor_onexit",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "monitor/monitor.go",
-      "source_location": "L218",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -8297,13 +8915,24 @@
     },
     {
       "source": "monitor_monitor",
+      "target": "monitor_monitor_onexit",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "monitor/monitor.go",
+      "source_location": "L230",
+      "weight": 1.0
+    },
+    {
+      "source": "monitor_monitor",
       "target": "monitor_monitor_run",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "monitor/monitor.go",
-      "source_location": "L228",
+      "source_location": "L240",
       "weight": 1.0
     },
     {
@@ -8314,7 +8943,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "monitor/monitor.go",
-      "source_location": "L54",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "monitor_monitor",
+      "target": "monitor_monitor_requestrefresh",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "monitor/monitor.go",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -8325,7 +8965,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "monitor/monitor.go",
-      "source_location": "L61",
+      "source_location": "L69",
       "weight": 1.0
     },
     {
@@ -8336,18 +8976,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "monitor/monitor_test.go",
-      "source_location": "L117",
-      "weight": 1.0
-    },
-    {
-      "source": "monitor_monitor_test",
-      "target": "monitor_monitor_test_testgetrunningmodelsandnotifications",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "monitor/monitor_test.go",
-      "source_location": "L157",
+      "source_location": "L133",
       "weight": 1.0
     },
     {
@@ -8363,6 +8992,17 @@
     },
     {
       "source": "monitor_monitor_test",
+      "target": "monitor_monitor_test_testgetrunningmodelsandnotifications",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "monitor/monitor_test.go",
+      "source_location": "L173",
+      "weight": 1.0
+    },
+    {
+      "source": "monitor_monitor_test",
       "target": "monitor_monitor_test_testvalidateapiurl",
       "relation": "contains",
       "_origin": "ast",
@@ -8374,13 +9014,24 @@
     },
     {
       "source": "monitor_monitor_test",
-      "target": "monitor_monitor_test_testrotatedwriter",
+      "target": "monitor_monitor_test_testrequestrefreshcoalesces",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "monitor/monitor_test.go",
       "source_location": "L68",
+      "weight": 1.0
+    },
+    {
+      "source": "monitor_monitor_test",
+      "target": "monitor_monitor_test_testrotatedwriter",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "monitor/monitor_test.go",
+      "source_location": "L84",
       "weight": 1.0
     },
     {
@@ -8447,6 +9098,17 @@
       "confidence_score": 1.0,
       "source_file": "monitor/startup_windows.go",
       "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "todo",
+      "target": "todo_ollama_monitor",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "todo.md",
+      "source_location": "L1",
       "weight": 1.0
     },
     {
@@ -8688,7 +9350,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L184",
+      "source_location": "L202",
       "weight": 1.0
     },
     {
@@ -8732,7 +9394,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L263",
+      "source_location": "L290",
       "weight": 1.0
     },
     {
@@ -8754,7 +9416,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L324",
+      "source_location": "L375",
       "weight": 1.0
     },
     {
@@ -8809,7 +9471,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L184",
+      "source_location": "L202",
       "weight": 1.0
     },
     {
@@ -9001,13 +9663,13 @@
     },
     {
       "source": "macos_sources_ollamakit_ollamaclient_ollamaclient",
-      "target": "macos_sources_ollamakit_ollamaclient_ollamaclient_post",
+      "target": "macos_sources_ollamakit_ollamaclient_ollamaclient_send",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L100",
+      "source_location": "L104",
       "weight": 1.0
     },
     {
@@ -9018,7 +9680,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L109",
+      "source_location": "L113",
       "weight": 1.0
     },
     {
@@ -9122,13 +9784,24 @@
     },
     {
       "source": "macos_sources_ollamakit_ollamaclient_ollamaclient",
+      "target": "macos_sources_ollamakit_ollamaclient_ollamaclient_delete",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
+      "source_location": "L86",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamakit_ollamaclient_ollamaclient",
       "target": "macos_sources_ollamakit_ollamaclient_ollamaclient_request",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L88",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -9139,7 +9812,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaKit/OllamaClient.swift",
-      "source_location": "L94",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -9187,6 +9860,39 @@
       "weight": 1.0
     },
     {
+      "source": "macos_sources_ollamamonitor_modelstorage_modelstorage",
+      "target": "macos_sources_ollamamonitor_modelstorage_modelstorage_manifest",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "macos/Sources/OllamaMonitor/ModelStorage.swift",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamamonitor_modelstorage_modelstorage",
+      "target": "macos_sources_ollamamonitor_modelstorage_modelstorage_validcomponent",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "macos/Sources/OllamaMonitor/ModelStorage.swift",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamamonitor_modelstorage_modelstorage",
+      "target": "macos_sources_ollamamonitor_modelstorage_modelstorage_directory",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "macos/Sources/OllamaMonitor/ModelStorage.swift",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
       "source": "macos_sources_ollamamonitor_monitor_monitor",
       "target": "macos_sources_ollamamonitor_monitor_monitor_popoveropened",
       "relation": "method",
@@ -9194,7 +9900,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L107",
+      "source_location": "L108",
       "weight": 1.0
     },
     {
@@ -9205,7 +9911,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L112",
+      "source_location": "L113",
       "weight": 1.0
     },
     {
@@ -9216,7 +9922,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L137",
+      "source_location": "L142",
       "weight": 1.0
     },
     {
@@ -9227,7 +9933,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L156",
+      "source_location": "L161",
       "weight": 1.0
     },
     {
@@ -9238,7 +9944,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L157",
+      "source_location": "L162",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamamonitor_monitor_monitor",
+      "target": "macos_sources_ollamamonitor_monitor_monitor_delete",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
+      "source_location": "L164",
       "weight": 1.0
     },
     {
@@ -9249,7 +9966,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L159",
+      "source_location": "L172",
       "weight": 1.0
     },
     {
@@ -9260,7 +9977,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L172",
+      "source_location": "L190",
       "weight": 1.0
     },
     {
@@ -9326,7 +10043,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L60",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -9337,7 +10054,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L72",
+      "source_location": "L73",
       "weight": 1.0
     },
     {
@@ -9348,7 +10065,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L73",
+      "source_location": "L74",
       "weight": 1.0
     },
     {
@@ -9359,7 +10076,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L75",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
@@ -9370,7 +10087,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L80",
+      "source_location": "L81",
       "weight": 1.0
     },
     {
@@ -9381,7 +10098,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L89",
+      "source_location": "L90",
       "weight": 1.0
     },
     {
@@ -9392,7 +10109,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L185",
+      "source_location": "L203",
       "weight": 1.0
     },
     {
@@ -9458,7 +10175,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L241",
+      "source_location": "L243",
       "weight": 1.0
     },
     {
@@ -9469,7 +10186,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L270",
+      "source_location": "L297",
       "weight": 1.0
     },
     {
@@ -9480,7 +10197,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L274",
+      "source_location": "L301",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamamonitor_popoverview_installedrow",
+      "target": "macos_sources_ollamamonitor_popoverview_installedrow_reveal",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
+      "source_location": "L355",
       "weight": 1.0
     },
     {
@@ -9491,7 +10219,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L312",
+      "source_location": "L363",
       "weight": 1.0
     },
     {
@@ -9524,7 +10252,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L329",
+      "source_location": "L380",
       "weight": 1.0
     },
     {
@@ -9801,7 +10529,7 @@
       "confidence_score": 0.8,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/Monitor.swift",
-      "source_location": "L123",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
@@ -9818,6 +10546,18 @@
     },
     {
       "source": "macos_sources_ollamamonitor_popoverview_installedlist_body",
+      "target": "macos_sources_ollamamonitor_monitor_monitor_delete",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "context": "call",
+      "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
+      "source_location": "L283",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_sources_ollamamonitor_popoverview_installedrow_body",
       "target": "macos_sources_ollamamonitor_monitor_monitor_load",
       "relation": "calls",
       "_origin": "ast",
@@ -9825,7 +10565,7 @@
       "confidence_score": 0.8,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L250",
+      "source_location": "L333",
       "weight": 1.0
     },
     {
@@ -9865,6 +10605,18 @@
       "weight": 1.0
     },
     {
+      "source": "macos_tests_ollamamonitortests_monitortests_deleterejectsachangedconnection",
+      "target": "macos_sources_ollamamonitor_monitor_monitor_delete",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "context": "call",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L221",
+      "weight": 1.0
+    },
+    {
       "source": "macos_tests_ollamamonitortests_monitortests_dropsoutoforderrefresh",
       "target": "macos_sources_ollamamonitor_monitor_monitor_refresh",
       "relation": "calls",
@@ -9886,6 +10638,18 @@
       "context": "call",
       "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
       "source_location": "L184",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_tests_ollamamonitortests_monitortests_runningpolldoesnotdiscardinstalledrefresh",
+      "target": "macos_sources_ollamamonitor_monitor_monitor_refresh",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "context": "call",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L242",
       "weight": 1.0
     },
     {
@@ -9921,11 +10685,11 @@
       "confidence_score": 0.8,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L242",
+      "source_location": "L248",
       "weight": 1.0
     },
     {
-      "source": "macos_sources_ollamamonitor_popoverview_installedlist_body",
+      "source": "macos_sources_ollamamonitor_popoverview_installedrow_body",
       "target": "macos_sources_ollamamonitor_monitor_monitor",
       "relation": "references",
       "_origin": "ast",
@@ -9933,7 +10697,7 @@
       "confidence_score": 0.8,
       "context": "call",
       "source_file": "macos/Sources/OllamaMonitor/PopoverView.swift",
-      "source_location": "L249",
+      "source_location": "L302",
       "weight": 1.0
     },
     {
@@ -10029,7 +10793,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
-      "source_location": "L207",
+      "source_location": "L208",
       "weight": 1.0
     },
     {
@@ -10054,6 +10818,18 @@
       "context": "call",
       "source_file": "macos/Tests/OllamaKitTests/OllamaKitTests.swift",
       "source_location": "L82",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_tests_ollamamonitortests_monitortests_deleterejectsachangedconnection",
+      "target": "macos_sources_ollamamonitor_monitor_monitor",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L219",
       "weight": 1.0
     },
     {
@@ -10102,6 +10878,42 @@
       "context": "call",
       "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
       "source_location": "L183",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_tests_ollamamonitortests_monitortests_runningpolldoesnotdiscardinstalledrefresh",
+      "target": "macos_sources_ollamakit_models_serversnapshot",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L239",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_tests_ollamamonitortests_monitortests_runningpolldoesnotdiscardinstalledrefresh",
+      "target": "macos_sources_ollamamonitor_monitor_monitor",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L240",
+      "weight": 1.0
+    },
+    {
+      "source": "macos_tests_ollamamonitortests_monitortests_runningpolldoesnotdiscardinstalledrefresh",
+      "target": "task",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "macos/Tests/OllamaMonitorTests/MonitorTests.swift",
+      "source_location": "L242",
       "weight": 1.0
     },
     {
@@ -10173,7 +10985,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "monitor/monitor.go",
-      "source_location": "L195",
+      "source_location": "L204",
       "weight": 1.0
     },
     {
@@ -10185,7 +10997,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "monitor/monitor.go",
-      "source_location": "L229",
+      "source_location": "L241",
       "weight": 1.0
     },
     {
@@ -10197,7 +11009,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "monitor/monitor.go",
-      "source_location": "L230",
+      "source_location": "L242",
       "weight": 1.0
     },
     {
@@ -10209,7 +11021,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "monitor/monitor.go",
-      "source_location": "L231",
+      "source_location": "L243",
       "weight": 1.0
     },
     {
@@ -10221,7 +11033,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "monitor/monitor.go",
-      "source_location": "L233",
+      "source_location": "L245",
       "weight": 1.0
     },
     {
@@ -10233,7 +11045,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "monitor/monitor_test.go",
-      "source_location": "L124",
+      "source_location": "L140",
       "weight": 1.0
     },
     {
@@ -10245,7 +11057,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "monitor/monitor_test.go",
-      "source_location": "L145",
+      "source_location": "L161",
       "weight": 1.0
     },
     {
@@ -10257,7 +11069,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "monitor/monitor_test.go",
-      "source_location": "L174",
+      "source_location": "L190",
       "weight": 1.0
     },
     {
@@ -10269,7 +11081,19 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "monitor/monitor_test.go",
-      "source_location": "L178",
+      "source_location": "L194",
+      "weight": 1.0
+    },
+    {
+      "source": "monitor_monitor_test_testrequestrefreshcoalesces",
+      "target": "monitor_monitor_requestrefresh",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "call",
+      "source_file": "monitor/monitor_test.go",
+      "source_location": "L70",
       "weight": 1.0
     },
     {
@@ -10281,7 +11105,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "monitor/monitor_test.go",
-      "source_location": "L71",
+      "source_location": "L87",
       "weight": 1.0
     },
     {
@@ -10305,7 +11129,7 @@
       "confidence_score": 0.85,
       "context": "call",
       "source_file": "monitor/monitor.go",
-      "source_location": "L64",
+      "source_location": "L71",
       "weight": 1.0
     },
     {
@@ -10921,5 +11745,5 @@
       "source_file": "macos/PLAN.md"
     }
   ],
-  "built_at_commit": "39de5294681c03dec757a9388361045296dd8168"
+  "built_at_commit": "a4f04eb9f7d32833ab927745e81b93fea4a3f32f"
 }
