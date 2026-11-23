@@ -6,70 +6,70 @@
     "semantic_hash": "7d471bb978914596793cf37d961fc89f"
   },
   "macos/Package.swift": {
-    "mtime": 1795325659.2235742,
-    "seen": 1795326476.474092,
-    "ast_hash": "47ad05064018632f074caaab7bc892cb",
-    "semantic_hash": "47ad05064018632f074caaab7bc892cb"
+    "mtime": 1795352465.3826597,
+    "seen": 1795438561.4789739,
+    "ast_hash": "e2f566a9811aee2e2e761ab102de9432",
+    "semantic_hash": "e2f566a9811aee2e2e761ab102de9432"
   },
   "macos/Sources/OllamaKit/Format.swift": {
-    "mtime": 1795325659.4694397,
-    "seen": 1795326476.474093,
+    "mtime": 1795326886.9720113,
+    "seen": 1795438561.478976,
     "ast_hash": "8a471932d309b72079e0ca398368b1c6",
     "semantic_hash": "8a471932d309b72079e0ca398368b1c6"
   },
   "macos/Sources/OllamaKit/Models.swift": {
-    "mtime": 1795326642.6166842,
-    "seen": 1795326719.6063218,
-    "ast_hash": "d1dad6840381e789299d61c01774925c",
-    "semantic_hash": "d1dad6840381e789299d61c01774925c"
+    "mtime": 1795352355.3327804,
+    "seen": 1795438561.478977,
+    "ast_hash": "0b949ced5ef66f0e65f08e4c3dd857a3",
+    "semantic_hash": "0b949ced5ef66f0e65f08e4c3dd857a3"
   },
   "macos/Sources/OllamaKit/OllamaClient.swift": {
-    "mtime": 1795325868.5885909,
-    "seen": 1795326476.4740942,
-    "ast_hash": "81075bc7fd0ba6e98f418ede6e958c5c",
-    "semantic_hash": "81075bc7fd0ba6e98f418ede6e958c5c"
+    "mtime": 1795352352.0352447,
+    "seen": 1795438561.478977,
+    "ast_hash": "baff89b69af713370268777a44017c2e",
+    "semantic_hash": "baff89b69af713370268777a44017c2e"
   },
   "macos/Sources/OllamaMonitor/App.swift": {
-    "mtime": 1795325860.112498,
-    "seen": 1795326476.474095,
+    "mtime": 1795326886.9731104,
+    "seen": 1795438561.4789782,
     "ast_hash": "78ea37a27ac319056b8a71ff7ffbfc07",
     "semantic_hash": "78ea37a27ac319056b8a71ff7ffbfc07"
   },
   "macos/Sources/OllamaMonitor/Monitor.swift": {
-    "mtime": 1795326642.6989157,
-    "seen": 1795326719.606324,
-    "ast_hash": "a5bf3af76bfeffa307390b19b81ed7ee",
-    "semantic_hash": "a5bf3af76bfeffa307390b19b81ed7ee"
+    "mtime": 1795352513.827319,
+    "seen": 1795438561.4789782,
+    "ast_hash": "46a33c3132b80a08df26d4cf1b7c3cf5",
+    "semantic_hash": "46a33c3132b80a08df26d4cf1b7c3cf5"
   },
   "macos/Sources/OllamaMonitor/PopoverView.swift": {
-    "mtime": 1795326058.2676356,
-    "seen": 1795326476.474096,
-    "ast_hash": "4229e8d53e94fec44662efe2f517d95c",
-    "semantic_hash": "4229e8d53e94fec44662efe2f517d95c"
+    "mtime": 1795352369.6774538,
+    "seen": 1795438561.478979,
+    "ast_hash": "61d09296414b3b60c127a10d8dfc74ac",
+    "semantic_hash": "61d09296414b3b60c127a10d8dfc74ac"
   },
   "macos/Sources/OllamaMonitor/SettingsView.swift": {
-    "mtime": 1795325860.0900424,
-    "seen": 1795326476.474096,
+    "mtime": 1795326886.9744112,
+    "seen": 1795438561.47898,
     "ast_hash": "0e7294662ddf5cfcf7d3c617962e8ecb",
     "semantic_hash": "0e7294662ddf5cfcf7d3c617962e8ecb"
   },
   "macos/Sources/OllamaMonitor/Snapshot.swift": {
-    "mtime": 1795326029.0271487,
-    "seen": 1795326476.474097,
+    "mtime": 1795326886.974806,
+    "seen": 1795438561.47898,
     "ast_hash": "b756d5f43c304b7f9057d49e6bb4663e",
     "semantic_hash": "b756d5f43c304b7f9057d49e6bb4663e"
   },
   "macos/Tests/OllamaKitTests/OllamaKitTests.swift": {
-    "mtime": 1795326642.7283506,
-    "seen": 1795326719.606327,
-    "ast_hash": "a2b53cdea291667d5c352b096ff1f0e9",
-    "semantic_hash": "a2b53cdea291667d5c352b096ff1f0e9"
+    "mtime": 1795352466.9598973,
+    "seen": 1795438561.478981,
+    "ast_hash": "14cfaa6d43f498b32a4a0d8d300feec2",
+    "semantic_hash": "14cfaa6d43f498b32a4a0d8d300feec2"
   },
   "macos/build.sh": {
-    "mtime": 1795325987.5895145,
-    "seen": 1795326476.474098,
-    "ast_hash": "3932feb865bb81a78cf8c5fd2504ec9e",
-    "semantic_hash": "3932feb865bb81a78cf8c5fd2504ec9e"
+    "mtime": 1795352374.8009439,
+    "seen": 1795438561.478983,
+    "ast_hash": "ef9a9470d4e82374ed5895a8ac2c8e76",
+    "semantic_hash": "ef9a9470d4e82374ed5895a8ac2c8e76"
   },
   "main.go": {
     "mtime": 1795325504.4919143,
@@ -78,16 +78,16 @@
     "semantic_hash": "4a56a6916343c44e8f8e096b4d372167"
   },
   "monitor/api.go": {
-    "mtime": 1795325504.4920564,
-    "seen": 1795326476.474099,
-    "ast_hash": "c12e1bb68b1f2541c5d37fcb9bcf739a",
-    "semantic_hash": "c12e1bb68b1f2541c5d37fcb9bcf739a"
+    "mtime": 1795352275.7711844,
+    "seen": 1795438561.478985,
+    "ast_hash": "d693290990bf318ecf615f1e35bf80a9",
+    "semantic_hash": "d693290990bf318ecf615f1e35bf80a9"
   },
   "monitor/config.go": {
-    "mtime": 1795325504.4921403,
-    "seen": 1795326476.474099,
-    "ast_hash": "91333927cc7b055588fa6eed39223b81",
-    "semantic_hash": "91333927cc7b055588fa6eed39223b81"
+    "mtime": 1795352216.3686986,
+    "seen": 1795438561.478985,
+    "ast_hash": "87db2ab52c26b5f1a8e3a06275a6a6f6",
+    "semantic_hash": "87db2ab52c26b5f1a8e3a06275a6a6f6"
   },
   "monitor/constants.go": {
     "mtime": 1795325504.4922175,
@@ -96,22 +96,22 @@
     "semantic_hash": "de880415aeb9e93f9ebd356a96dc920e"
   },
   "monitor/icon.go": {
-    "mtime": 1795325504.4923081,
-    "seen": 1795326476.4740999,
-    "ast_hash": "b01254deb4d48f5360c873e6c6cad3b3",
-    "semantic_hash": "b01254deb4d48f5360c873e6c6cad3b3"
+    "mtime": 1795352284.3924806,
+    "seen": 1795438561.478987,
+    "ast_hash": "fc3d8dfcc53e532628b45c2108d3dbe3",
+    "semantic_hash": "fc3d8dfcc53e532628b45c2108d3dbe3"
   },
   "monitor/logging.go": {
-    "mtime": 1795325504.4943666,
-    "seen": 1795326476.474101,
-    "ast_hash": "46944a13736c0ee4cf278123f4282997",
-    "semantic_hash": "46944a13736c0ee4cf278123f4282997"
+    "mtime": 1795352220.3706675,
+    "seen": 1795438561.478987,
+    "ast_hash": "7714279ab41aa3b5307ec4214d2ab851",
+    "semantic_hash": "7714279ab41aa3b5307ec4214d2ab851"
   },
   "monitor/monitor.go": {
-    "mtime": 1795325504.4944694,
-    "seen": 1795326476.474101,
-    "ast_hash": "9b77ab56da80e03593d0b9ebd2fb8d1a",
-    "semantic_hash": "9b77ab56da80e03593d0b9ebd2fb8d1a"
+    "mtime": 1795352280.3097987,
+    "seen": 1795438561.478988,
+    "ast_hash": "cb06eb177bee3ed47902dfecbcfa06eb",
+    "semantic_hash": "cb06eb177bee3ed47902dfecbcfa06eb"
   },
   "monitor/notify_other.go": {
     "mtime": 1795325504.4945946,
@@ -120,10 +120,10 @@
     "semantic_hash": "e9dde0a26158d6fa5243a59abb0da075"
   },
   "monitor/notify_windows.go": {
-    "mtime": 1795325504.4946842,
-    "seen": 1795326476.474102,
-    "ast_hash": "46c520c71cd85db30b13f88c99ecd2bc",
-    "semantic_hash": "46c520c71cd85db30b13f88c99ecd2bc"
+    "mtime": 1795352283.2530777,
+    "seen": 1795438561.47899,
+    "ast_hash": "08a879f8a1c0c6015a03526af81dcba7",
+    "semantic_hash": "08a879f8a1c0c6015a03526af81dcba7"
   },
   "monitor/startup_other.go": {
     "mtime": 1795325504.4947708,
@@ -150,22 +150,16 @@
     "semantic_hash": "5f39ca7a4f0a3af9301353a15468bc8a"
   },
   "README.md": {
-    "mtime": 1795326133.242428,
-    "seen": 1795326476.4741051,
-    "ast_hash": "defc290cd5d0ba35056cff2e72e4ab09",
-    "semantic_hash": "defc290cd5d0ba35056cff2e72e4ab09"
+    "mtime": 1795352553.8195274,
+    "seen": 1795438561.478992,
+    "ast_hash": "9ebb718e4f681e32450254538e03739d",
+    "semantic_hash": "9ebb718e4f681e32450254538e03739d"
   },
   "macos/PLAN.md": {
     "mtime": 1795325601.3331983,
     "seen": 1795326476.4741051,
     "ast_hash": "730e3d45636f97793fe4752666eb5be4",
     "semantic_hash": "730e3d45636f97793fe4752666eb5be4"
-  },
-  "logo.png": {
-    "mtime": 1795325504.4918048,
-    "seen": 1795326476.474106,
-    "ast_hash": "ac220583f00817b4a95d6587c591ab9c",
-    "semantic_hash": "ac220583f00817b4a95d6587c591ab9c"
   },
   "monitor/icons/icon_blue.png": {
     "mtime": 1795325504.493502,
@@ -185,10 +179,16 @@
     "ast_hash": "2c20831680b02ea633f911be9abc80b8",
     "semantic_hash": "2c20831680b02ea633f911be9abc80b8"
   },
-  "monitor/icons/logo.png": {
-    "mtime": 1795325504.4942546,
-    "seen": 1795326476.474108,
-    "ast_hash": "7416e4fb7ac9be8a3dabd49d05dcb2f3",
-    "semantic_hash": "7416e4fb7ac9be8a3dabd49d05dcb2f3"
+  "macos/Tests/OllamaMonitorTests/MonitorTests.swift": {
+    "mtime": 1795352531.7689586,
+    "seen": 1795438561.478982,
+    "ast_hash": "f3bdfc606d2d53847f293223a03f7410",
+    "semantic_hash": "f3bdfc606d2d53847f293223a03f7410"
+  },
+  "monitor/monitor_test.go": {
+    "mtime": 1795352462.6543176,
+    "seen": 1795438561.478988,
+    "ast_hash": "19fd571f85895cfe20205ca7aa35e923",
+    "semantic_hash": "19fd571f85895cfe20205ca7aa35e923"
   }
 }
