@@ -75,12 +75,16 @@ public struct OllamaClient: Sendable {
 
     /// Frees the model's memory now.
     public func unload(_ model: String) async throws {
-        try await post("api/generate", body: ["model": model, "keep_alive": 0], timeout: 30)
+        try await send("POST", "api/generate", body: ["model": model, "keep_alive": 0], timeout: 30)
     }
 
     /// Loads the model with the server's default keep-alive. Big models can take a while.
     public func load(_ model: String) async throws {
-        try await post("api/generate", body: ["model": model], timeout: 300)
+        try await send("POST", "api/generate", body: ["model": model], timeout: 300)
+    }
+
+    public func delete(_ model: String) async throws {
+        try await send("DELETE", "api/delete", body: ["model": model], timeout: 30)
     }
 
     // MARK: - HTTP
@@ -97,9 +101,9 @@ public struct OllamaClient: Sendable {
         return try Self.decoder.decode(T.self, from: data)
     }
 
-    func post(_ path: String, body: [String: any Sendable], timeout: TimeInterval) async throws {
+    func send(_ method: String, _ path: String, body: [String: any Sendable], timeout: TimeInterval) async throws {
         var r = request(path, timeout: timeout)
-        r.httpMethod = "POST"
+        r.httpMethod = method
         r.setValue("application/json", forHTTPHeaderField: "Content-Type")
         r.httpBody = try JSONSerialization.data(withJSONObject: body)
         let (data, response) = try await session.data(for: r)

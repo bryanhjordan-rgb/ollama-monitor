@@ -19,7 +19,7 @@ var (
 	stopOnce           sync.Once
 )
 
-func changeAPIURL() {
+func changeAPIURL(refresh chan<- struct{}) {
 	settingsLock.Lock()
 	currentAPIURL := settings.APIURL
 	settingsLock.Unlock()
@@ -47,6 +47,7 @@ func changeAPIURL() {
 	settingsLock.Unlock()
 
 	saveSettings()
+	requestRefresh(refresh)
 
 	sendNotification("Settings Saved", fmt.Sprintf("Ollama API URL updated to: %s", parsedURL.Redacted()))
 }
@@ -58,10 +59,17 @@ func showAbout() {
 	)
 }
 
-func updateStatusLoop() {
-	interval := 2 * time.Second
+func requestRefresh(refresh chan<- struct{}) {
+	select {
+	case refresh <- struct{}{}:
+	default: // A refresh is already queued.
+	}
+}
+
+func updateStatusLoop(refresh <-chan struct{}) {
 	for {
 		state, models := getRunningModels()
+		interval := 10 * time.Second
 
 		switch state {
 		case StateOffline:
@@ -73,7 +81,6 @@ func updateStatusLoop() {
 			for _, m := range mModelSlots {
 				m.Hide()
 			}
-			interval = 10 * time.Second
 
 		case StateIdle:
 			systray.SetIcon(iconBlue)
@@ -84,7 +91,6 @@ func updateStatusLoop() {
 			for _, m := range mModelSlots {
 				m.Hide()
 			}
-			interval = 10 * time.Second
 
 		case StateActive:
 			systray.SetIcon(iconGreen)
@@ -120,6 +126,7 @@ func updateStatusLoop() {
 		select {
 		case <-stopCh:
 			return
+		case <-refresh:
 		case <-time.After(interval):
 		}
 	}
@@ -142,9 +149,9 @@ func onReady() {
 		m.Hide()
 		mModelSlots = append(mModelSlots, m)
 	}
-	
+
 	systray.AddSeparator()
-	
+
 	var mStartup *systray.MenuItem
 	var startupCh chan struct{}
 	if runtime.GOOS == "windows" {
@@ -160,6 +167,7 @@ func onReady() {
 		startupCh = mStartup.ClickedCh
 	}
 
+	mRefresh := systray.AddMenuItem("Refresh Now", "Check Ollama status now")
 	mAPI := systray.AddMenuItem("Change API URL...", "")
 	mAbout := systray.AddMenuItem("About...", "")
 
@@ -167,7 +175,8 @@ func onReady() {
 	mExit := systray.AddMenuItem("Exit", "")
 
 	// Start status updater loop
-	go updateStatusLoop()
+	refresh := make(chan struct{}, 1)
+	go updateStatusLoop(refresh)
 
 	// Wait for actions
 	go func() {
@@ -199,9 +208,12 @@ func onReady() {
 					mStartup.Uncheck()
 				}
 
+			case <-mRefresh.ClickedCh:
+				requestRefresh(refresh)
+
 			case <-mAPI.ClickedCh:
 				appLogger.Println("Change API URL clicked")
-				go changeAPIURL()
+				go changeAPIURL(refresh)
 
 			case <-mAbout.ClickedCh:
 				appLogger.Println("About clicked")

@@ -65,6 +65,22 @@ func TestValidateAPIURL(t *testing.T) {
 	}
 }
 
+func TestRequestRefreshCoalesces(t *testing.T) {
+	refresh := make(chan struct{}, 1)
+	requestRefresh(refresh)
+	requestRefresh(refresh)
+	select {
+	case <-refresh:
+	default:
+		t.Fatal("expected a queued refresh")
+	}
+	select {
+	case <-refresh:
+		t.Fatal("queued more than one refresh")
+	default:
+	}
+}
+
 func TestRotatedWriter(t *testing.T) {
 	dir := t.TempDir()
 	logPath := filepath.Join(dir, "test.log")

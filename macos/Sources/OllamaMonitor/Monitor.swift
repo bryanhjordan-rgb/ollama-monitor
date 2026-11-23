@@ -2,7 +2,7 @@ import Foundation
 import OllamaKit
 import UserNotifications
 
-/// Polls Ollama, holds what the popover shows, runs Load/Unload, and sends notifications.
+/// Polls Ollama, holds what the popover shows, runs model actions, and sends notifications.
 @Observable
 final class Monitor {
     enum Status: Equatable {
@@ -43,6 +43,7 @@ final class Monitor {
     @ObservationIgnored private var task: Task<Void, Never>?
     @ObservationIgnored private var refreshCount = 0
     @ObservationIgnored private var appliedRefresh = 0
+    @ObservationIgnored private var fullRefreshes = 0
     @ObservationIgnored private let notifier = NotificationDelegate()
 
     init(session: URLSession = .shared, defaults: UserDefaults = .standard) {
@@ -110,16 +111,20 @@ final class Monitor {
     }
 
     func refresh(full: Bool = true) async {
-        // The poll loop, Load/Unload and ⌘R can overlap; a slow older answer must not overwrite a newer one.
+        // The poll loop, model actions and ⌘R can overlap; a slow older answer must not overwrite a newer one.
         refreshCount += 1
         let id = refreshCount, url = apiURL
         guard let client else { appliedRefresh = id; apply(.offline("The API URL in Settings isn't valid.")); return }
         let next: Status
         do {
             if !full, case .online(let current) = status {
+                // A running-only poll must not supersede a refresh of the installed list.
+                guard fullRefreshes == 0 else { return }
                 let running = try await client.running()
                 next = .online(ServerSnapshot(version: current.version, running: running, installed: current.installed))
             } else {
+                fullRefreshes += 1
+                defer { fullRefreshes -= 1 }
                 next = .online(try await client.snapshot())
             }
         } catch is CancellationError {
@@ -156,14 +161,27 @@ final class Monitor {
     func unload(_ name: String) { perform(name) { try await $0.unload(name) } }
     func load(_ name: String) { perform(name) { try await $0.load(name) } }
 
+    func delete(_ name: String, from confirmedURL: String) {
+        guard apiURL == confirmedURL else {
+            actionError = "The Ollama connection changed. Choose the model again."
+            return
+        }
+        perform(name) { try await $0.delete(name) }
+    }
+
     private func perform(_ name: String, _ op: @escaping @Sendable (OllamaClient) async throws -> Void) {
         guard let client, !busy.contains(name) else { return }
+        let url = apiURL
         busy.insert(name)
         actionError = nil
         Task {
-            do { try await op(client) } catch { actionError = "\(name): \(error.localizedDescription)" }
-            await refresh()
-            busy.remove(name)
+            defer { busy.remove(name) }
+            do {
+                try await op(client)
+            } catch {
+                if apiURL == url { actionError = "\(name): \(error.localizedDescription)" }
+            }
+            if apiURL == url { await refresh() }
         }
     }
 

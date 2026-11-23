@@ -186,3 +186,69 @@ private func isolatedDefaults() -> UserDefaults {
     #expect(lock.withLock { count } == 0)
     #expect(preview.status == .offline("offline"))
 }
+
+@Test func findsModelManifestInBothStoreLayouts() throws {
+    let root = FileManager.default.temporaryDirectory.appending(component: UUID().uuidString)
+    defer { try? FileManager.default.removeItem(at: root) }
+
+    let legacy = root.appending(path: "manifests/registry.ollama.ai/library/llama/latest")
+    let v2 = root.appending(path: "manifests-v2/ollama.com/library/llama/latest")
+    let privateRegistry = root.appending(path: "manifests-v2/registry.example.com%3A5000/team/llama/custom")
+    for manifest in [legacy, privateRegistry] {
+        try FileManager.default.createDirectory(at: manifest.deletingLastPathComponent(), withIntermediateDirectories: true)
+        try Data().write(to: manifest)
+    }
+    #expect(ModelStorage.manifest(for: "llama", in: root) == legacy)
+    #expect(ModelStorage.manifest(for: "registry.example.com:5000/team/llama:custom", in: root) == privateRegistry)
+    #expect(ModelStorage.manifest(for: "../llama:latest", in: root) == nil)
+    #expect(ModelStorage.manifest(for: "missing:latest", in: root) == nil)
+    #expect(ModelStorage.manifest(for: "", in: root) == nil)
+
+    try FileManager.default.createDirectory(at: v2.deletingLastPathComponent(), withIntermediateDirectories: true)
+    try FileManager.default.createSymbolicLink(at: v2, withDestinationURL: legacy)
+    #expect(ModelStorage.manifest(for: "llama:latest", in: root) == v2)
+}
+
+@Test func deleteRejectsAChangedConnection() {
+    let session = MonitorStubURLProtocol.makeSession { req in
+        Issue.record("Delete confirmation must stay on the original server")
+        return ok(req.url!, json: "{}")
+    }
+    let defaults = isolatedDefaults()
+    defaults.set("http://second.local:11434", forKey: "apiURL")
+    let monitor = Monitor(session: session, defaults: defaults)
+
+    monitor.delete("llama:latest", from: "http://first.local:11434")
+
+    #expect(monitor.busy.isEmpty)
+    #expect(monitor.actionError != nil)
+}
+
+@Test func runningPollDoesNotDiscardInstalledRefresh() async {
+    let entered = AsyncStream<Void>.makeStream()
+    let resume = AsyncStream<Void>.makeStream()
+    let session = MonitorStubURLProtocol.makeSession { req in
+        let url = req.url!
+        if url.path == "/api/tags" {
+            entered.continuation.yield()
+            var iterator = resume.stream.makeAsyncIterator()
+            _ = await iterator.next()
+        }
+        return snapshotResponse(for: url, version: "0.1.0", runningName: "other-model")
+    }
+    let original = ServerSnapshot(version: "0.1.0", running: [], installed: [.init(name: "deleted-model", size: 1)])
+    let monitor = Monitor(preview: .online(original), session: session)
+
+    let full = Task { await monitor.refresh() }
+    var iterator = entered.stream.makeAsyncIterator()
+    _ = await iterator.next()
+    await monitor.refresh(full: false)
+    resume.continuation.yield()
+    await full.value
+
+    guard case .online(let refreshed) = monitor.status else {
+        Issue.record("expected an updated server snapshot")
+        return
+    }
+    #expect(refreshed.installed.isEmpty)
+}

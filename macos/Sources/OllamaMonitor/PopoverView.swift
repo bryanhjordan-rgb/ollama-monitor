@@ -237,26 +237,53 @@ struct ModelCard: View {
 struct InstalledList: View {
     let snapshot: ServerSnapshot
     let monitor: Monitor
+    @State private var query = ""
+    @State private var deletion: (name: String, url: String, host: String)?
 
     var body: some View {
+        let term = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        let models = term.isEmpty ? snapshot.installed : snapshot.installed.filter {
+            $0.name.localizedStandardContains(term)
+        }
         let loaded = Set(snapshot.running.map(\.name))
         let isLocal = monitor.client?.isLocal ?? false
-        ScrollView {
-            VStack(spacing: 0) {
-                ForEach(snapshot.installed) { model in
-                    InstalledRow(model: model, loaded: loaded.contains(model.name),
-                                 isLocal: isLocal,
-                                 busy: monitor.busy.contains(model.name)) {
-                        monitor.load(model.name)
-                    }
-                    .padding(.vertical, 5)
-                    if model.id != snapshot.installed.last?.id { Divider() }
-                }
+        VStack(alignment: .leading, spacing: 4) {
+            if snapshot.installed.count >= 5 || !query.isEmpty {
+                TextField("Filter installed models", text: $query)
+                    .textFieldStyle(.roundedBorder)
+                    .autocorrectionDisabled()
             }
-            .padding(.top, 4)
+            if models.isEmpty {
+                Text(snapshot.installed.isEmpty ? "No installed models" : "No matching models")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            } else {
+                ScrollView {
+                    VStack(spacing: 0) {
+                        ForEach(models) { model in
+                            InstalledRow(model: model, loaded: loaded.contains(model.name),
+                                         isLocal: isLocal, monitor: monitor) {
+                                deletion = (model.name, monitor.apiURL, monitor.displayHost)
+                            }
+                            .padding(.vertical, 5)
+                            if model.id != models.last?.id { Divider() }
+                        }
+                    }
+                }
+                .frame(maxHeight: 240)
+                .fixedSize(horizontal: false, vertical: models.count <= 5)
+            }
         }
-        .frame(maxHeight: 240)
-        .fixedSize(horizontal: false, vertical: snapshot.installed.count <= 5)
+        .padding(.top, 4)
+        .alert("Delete model?", isPresented: Binding(
+            get: { deletion != nil },
+            set: { if !$0 { deletion = nil } }
+        ), presenting: deletion) { target in
+            Button("Cancel", role: .cancel) {}
+            Button("Delete", role: .destructive) { monitor.delete(target.name, from: target.url) }
+        } message: { target in
+            Text("Ollama will remove \(target.name) from \(target.host). This cannot be undone.")
+        }
     }
 }
 
@@ -264,14 +291,15 @@ struct InstalledRow: View {
     let model: InstalledModel
     let loaded: Bool
     let isLocal: Bool
-    let busy: Bool
-    let load: () -> Void
+    let monitor: Monitor
+    let delete: () -> Void
 
     private var tooBig: Bool {
         isLocal && Double(model.size) > 0.6 * Double(ProcessInfo.processInfo.physicalMemory)
     }
 
     var body: some View {
+        let busy = monitor.busy.contains(model.name)
         HStack(spacing: 8) {
             VStack(alignment: .leading, spacing: 2) {
                 Text(model.name).lineLimit(1).truncationMode(.middle)
@@ -294,19 +322,42 @@ struct InstalledRow: View {
                 .foregroundStyle(.secondary)
             }
             Spacer()
-            if loaded {
+            if busy {
+                ProgressView().controlSize(.small)
+            } else if loaded {
                 Image(systemName: "checkmark.circle.fill")
                     .foregroundStyle(.green)
                     .help("Loaded")
                     .accessibilityLabel("Loaded")
-            } else if busy {
-                ProgressView().controlSize(.small)
             } else if model.canGenerate {
-                Button("Load", action: load)
+                Button("Load") { monitor.load(model.name) }
                     .controlSize(.small)
                     .help("Load into memory now")
             }
+            Menu {
+                if isLocal {
+                    Button("Show in Finder", action: reveal)
+                }
+                Button("Delete…", role: .destructive, action: delete)
+            } label: {
+                Label("Actions for \(model.name)", systemImage: "ellipsis.circle")
+                    .labelStyle(.iconOnly)
+            }
+            .menuStyle(.borderlessButton)
+            .menuIndicator(.hidden)
+            .fixedSize()
+            .controlSize(.small)
+            .help("Model actions")
+            .disabled(busy)
         }
+    }
+
+    private func reveal() {
+        guard let manifest = ModelStorage.manifest(for: model.name) else {
+            monitor.actionError = "Could not find \(model.name) in \(ModelStorage.directory.path)."
+            return
+        }
+        NSWorkspace.shared.activateFileViewerSelecting([manifest])
     }
 
     static func symbol(for capability: String) -> String {

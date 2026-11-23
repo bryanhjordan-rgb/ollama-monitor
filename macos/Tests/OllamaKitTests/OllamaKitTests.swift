@@ -162,7 +162,7 @@ private func httpResponse(_ url: URL, status: Int) -> HTTPURLResponse {
             return (httpResponse(url, status: 200), Data(psJSON.utf8))
         case "/api/tags":
             return (httpResponse(url, status: 200), Data(tagsJSON.utf8))
-        case "/api/generate":
+        case "/api/generate", "/api/delete":
             return (httpResponse(url, status: 200), Data("{}".utf8))
         default:
             return (httpResponse(url, status: 404), Data())
@@ -187,19 +187,20 @@ private func httpResponse(_ url: URL, status: Int) -> HTTPURLResponse {
     seenLock.withLock { requests.removeAll() }
     try await client.load("gemma4:e4b")
     try await client.unload("gemma4:e4b")
-    let postBodies = seenLock.withLock { requests }
-    #expect(postBodies.count == 2)
-    #expect(postBodies[0].path == "/api/generate")
-    #expect(postBodies[0].body?["model"] as? String == "gemma4:e4b")
-    #expect(postBodies[0].body?["keep_alive"] == nil)
-    #expect(postBodies[1].body?["model"] as? String == "gemma4:e4b")
-    #expect(postBodies[1].body?["keep_alive"] as? Int == 0)
+    try await client.delete("gemma4:e4b")
+    let actions = seenLock.withLock { requests }
+    #expect(actions.map(\.method) == ["POST", "POST", "DELETE"])
+    #expect(actions.map(\.path) == ["/api/generate", "/api/generate", "/api/delete"])
+    #expect(actions.map { $0.body?["model"] as? String } == Array(repeating: "gemma4:e4b", count: 3))
+    #expect(actions[0].body?["keep_alive"] == nil)
+    #expect(actions[1].body?["keep_alive"] as? Int == 0)
+    #expect(actions[2].auth == expectedAuth)
 }
 
 @Test func clientErrorParsing() async throws {
     let session = StubURLProtocol.makeSession { req in
         let url = req.url!
-        if url.path == "/api/ps" {
+        if url.path == "/api/ps" || url.path == "/api/delete" {
             return (httpResponse(url, status: 404), Data(#"{"error":"model 'x' not found"}"#.utf8))
         }
         return (httpResponse(url, status: 500), Data("plain text error".utf8))
@@ -207,6 +208,9 @@ private func httpResponse(_ url: URL, status: Int) -> HTTPURLResponse {
     let client = try OllamaClient(urlString: "http://localhost:11434", session: session)
     await #expect(throws: OllamaError.http(404, "model 'x' not found")) {
         _ = try await client.running()
+    }
+    await #expect(throws: OllamaError.http(404, "model 'x' not found")) {
+        try await client.delete("x")
     }
     await #expect(throws: OllamaError.http(500, "")) {
         _ = try await client.installed()

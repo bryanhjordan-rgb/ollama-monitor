@@ -72,7 +72,7 @@ A lightweight cross-platform system tray application to monitor Ollama AI models
    ```
 
 ### Option 4: Native macOS menu-bar app (macOS 26+)
-A SwiftUI app in [`macos/`](macos/) replaces the tray menu with a popover: a card per loaded model (memory share, GPU/CPU split, context length, live unload countdown, **Unload**), installed models with capability icons and **Load**, a warning on models too big for the Mac's memory, notifications, and a Settings window (API URL, check interval, open at login).
+A SwiftUI app in [`macos/`](macos/) replaces the tray menu with a popover: a card per loaded model (memory share, GPU/CPU split, context length, live unload countdown, **Unload**), installed models with capability icons and **Load**, a warning on models too big for the Mac's memory, notifications, and a Settings window (API URL, check interval, open at login). The installed list offers a name filter when five or more models are installed. Open a model’s **…** menu to reveal its local manifest in Finder or delete the model from the connected Ollama server after confirming.
 ```bash
 cd macos
 ./build.sh --open          # builds, installs ~/Applications/OllamaMonitor.app, starts it
@@ -90,6 +90,7 @@ Needs Xcode (Swift 6.2+).
 3. The app will immediately register in your system tray with a color-coded status icon.
 4. Right-click the tray icon to:
    - View currently running models (each loaded model appears as an individual row).
+   - Click **Refresh Now** to check Ollama immediately. Saving a new API URL also triggers a check.
    - Toggle **Run at Startup** (Windows-only).
    - Click **Change API URL...** to configure host connections (supports HTTPS proxies and authentication).
    - Click **About...** to view version information.
