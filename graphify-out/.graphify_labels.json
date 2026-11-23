@@ -1,1 +1,24 @@
-{"0": "macOS Menu-Bar UI", "1": "Go Tray App Core", "2": "Swift Model Types", "3": "Swift API Client", "4": "macOS Monitor State", "5": "Monitor Tests", "6": "OllamaKit Tests", "7": "Changelog & macOS Plan", "8": "Swift Formatting Helpers", "9": "README Features", "10": "Go Notify (non-Windows)", "11": "macOS Build Script", "12": "Swift Package Manifest", "13": "Blue Tray Icon", "14": "Green Tray Icon", "15": "Red Tray Icon", "16": "Go Startup (non-Windows)", "17": "Go Startup (Windows)", "22": "Go Constants", "24": "Go Module", "18": "Orphan Type Data", "19": "Orphan Type Date", "20": "Orphan Type Int", "21": "Orphan Type Int64", "23": "Orphan Type OllamaClient", "25": "Orphan Type Set", "26": "Orphan Type URL", "27": "Orphan Type URLRequest", "28": "Orphan Type URLSession", "29": "Orphan Type UserDefaults", "30": "Orphan Type Void"}
+{
+  "0": "HeaderView",
+  "1": "api.go",
+  "2": "RunningModel",
+  "3": "OllamaClient",
+  "4": "Monitor",
+  "5": "MonitorTests.swift",
+  "6": "OllamaKitTests.swift",
+  "7": "Ollama Monitor for macOS plan",
+  "8": ".bytes",
+  "9": "Ollama Monitor",
+  "10": "notify_other.go",
+  "11": "build.sh",
+  "12": "Package.swift",
+  "13": "Blue Status Color Variant",
+  "14": "Green Llama Tray Icon",
+  "15": "Red Llama Tray Icon",
+  "16": "startup_other.go",
+  "17": "startup_windows.go",
+  "18": "Foundation",
+  "19": "notify_windows.go",
+  "22": "constants.go",
+  "24": "ollamaMonitor"
+}
