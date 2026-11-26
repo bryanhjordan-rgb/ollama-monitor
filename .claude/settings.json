@@ -1,0 +1,6 @@
+{
+  "enabledPlugins": {
+    "bama@bama": true,
+    "swift-lsp@claude-plugins-official": true
+  }
+}
